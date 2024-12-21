@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to AI Cryptopia</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen p-8">
+        <!-- Header -->
+        <div class="max-w-6xl mx-auto mb-12 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4" id="orgName">Loading...</h1>
+            <p class="text-xl text-gray-600 mb-8" id="orgDescription">
+                Explore our open source projects
+            </p>
+            
+            <!-- Search -->
+            <div class="flex justify-center mb-8">
+                <input
+                    type="text"
+                    placeholder="Search repositories..."
+                    id="searchInput"
+                    class="px-4 py-2 border rounded-lg w-full max-w-md"
+                >
+            </div>
+        </div>
+
+        <!-- Repository Grid -->
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="repoGrid">
+            <!-- Repositories will be inserted here -->
+        </div>
+    </div>
+
+    <script>
+        // Replace with your organization name
+        const ORG_NAME = 'AICryptopia';
+
+        // Update organization name in the header
+        document.getElementById('orgName').textContent = ORG_NAME;
+
+        // Fetch and display repositories
+        async function fetchRepos() {
+            try {
+                const response = await fetch(`https://api.github.com/orgs/${ORG_NAME}/repos`);
+                const repos = await response.json();
+                displayRepos(repos);
+            } catch (error) {
+                console.error('Error fetching repos:', error);
+                document.getElementById('repoGrid').innerHTML = 
+                    '<div class="col-span-3 text-center text-red-600">Error loading repositories</div>';
+            }
+        }
+
+        function displayRepos(repos) {
+            const grid = document.getElementById('repoGrid');
+            grid.innerHTML = repos.map(repo => `
+                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer"
+                   class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">${repo.name}</h3>
+                    <p class="text-gray-600 mb-4 h-12 overflow-hidden">
+                        ${repo.description || 'No description available'}
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="flex items-center gap-1">
+                            <span>⭐</span>
+                            <span class="text-gray-600">${repo.stargazers_count}</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <span>🍴</span>
+                            <span class="text-gray-600">${repo.forks_count}</span>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            Updated: ${new Date(repo.updated_at).toLocaleDateString()}
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('#repoGrid > a');
+            
+            cards.forEach(card => {
+                const name = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const isVisible = name.includes(searchTerm) || description.includes(searchTerm);
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+        });
+
+        // Initial load
+        fetchRepos();
+    </script>
+</body>
+</html>
