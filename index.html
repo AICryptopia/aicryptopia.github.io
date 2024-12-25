@@ -46,39 +46,161 @@
             height: 50px;
             object-fit: contain;
         }
+        /* New styles for Vision & Mission sections */
+        .backdrop-blur-sm {
+            backdrop-filter: blur(8px);
+        }
+        section div {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        section div:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        /* Updated card background for better visibility */
+        .bg-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Remove the general section div hover since we'll handle it differently */
+        section div {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Desktop hover effects */
+        @media (hover: hover) and (pointer: fine) {
+            .bg-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                border-color: rgba(148, 163, 184, 0.3);
+            }
+        }
+
+        /* Mobile touch effect */
+        @media (hover: none) {
+            .bg-card:active {
+                transform: scale(0.98);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Responsive title adjustments */
+        @media (max-width: 640px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            #orgName {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            .org-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
     </style>
 </head>
 <body class="p-8">
-    <!-- Header -->
+    <!-- Header with responsive classes -->
     <div class="max-w-6xl mx-auto mb-12 text-center">
         <div class="header-container mb-4">
             <img src="aicryptopia-logo.png" alt="AICryptopia Logo" class="org-logo">
-            <h1 class="text-5xl font-bold text-sky-400 glow" id="orgName">AI Cryptopia</h1>
+            <h1 class="text-5xl sm:text-5xl font-bold text-sky-400 glow" id="orgName">AI Cryptopia</h1>
         </div>
         <p class="text-xl text-gray-300 mb-8" id="orgDescription">
             Explore our open source projects
         </p>
-        
-        <!-- Search -->
-        <div class="flex justify-center mb-12">
-            <input
-                type="text"
-                placeholder="Search repositories..."
-                id="searchInput"
-                class="search-input px-6 py-3 rounded-lg w-full max-w-md text-gray-100 placeholder-gray-400 outline-none"
-            >
-        </div>
     </div>
 
-    <!-- Rest of the content remains the same -->
+    <!-- Vision & Mission Section with centered titles -->
+    <section class="max-w-6xl mx-auto mb-16">
+        <!-- Section Title -->
+        <h2 class="text-3xl font-bold text-sky-400 text-center mb-8 glow">Our Vision & Mission</h2>
+        
+        <!-- Mission & Vision Container -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Mission Statement -->
+            <div class="bg-card backdrop-blur-sm rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-sky-400 mb-4 text-center">Mission</h2>
+                <p class="text-gray-300">
+                    AICryptopia seeks to unite AI and Web3 to create a decentralized ecosystem where innovation thrives, and contributors are empowered to build the intelligent, decentralized future.
+                </p>
+            </div>
+            
+            <!-- Vision -->
+            <div class="bg-card backdrop-blur-sm rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-sky-400 mb-4 text-center">Vision</h2>
+                <p class="text-gray-300">
+                    A harmonious future where AI and blockchain converge to foster collaboration, empower communities, and redefine the boundaries of technology.
+                </p>
+            </div>
+        </div>
+
+        <!-- Value Proposition -->
+        <div class="bg-card backdrop-blur-sm rounded-xl p-8 mb-12">
+            <h2 class="text-2xl font-bold text-sky-400 mb-4 text-center">Our Value</h2>
+            <p class="text-gray-300">
+                AICryptopia provides a decentralized platform that seamlessly merges AI's transformative potential with blockchain's transparency and trustlessness. By enabling global collaboration, it empowers communities to co-create cutting-edge tools, governance models, and intelligent solutions that define the Web3 future.
+            </p>
+        </div>
+
+        <!-- Core Themes -->
+        <h2 class="text-2xl font-bold text-sky-400 text-center mb-6">Core Themes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-card backdrop-blur-sm rounded-xl p-6">
+                <h3 class="text-xl font-bold text-sky-400 mb-3 text-center">Collaboration Over Competition</h3>
+                <p class="text-gray-300">
+                    We thrive as a community that prioritizes shared goals and collective success, solving global challenges together.
+                </p>
+            </div>
+            
+            <div class="bg-card backdrop-blur-sm rounded-xl p-6">
+                <h3 class="text-xl font-bold text-sky-400 mb-3 text-center">Decentralization as Freedom</h3>
+                <p class="text-gray-300">
+                    By decentralizing AI and Web3, we empower individuals with ownership, privacy, and autonomy over their contributions and digital assets.
+                </p>
+            </div>
+            
+            <div class="bg-card backdrop-blur-sm rounded-xl p-6">
+                <h3 class="text-xl font-bold text-sky-400 mb-3 text-center">Building the Intelligent Web3 Future</h3>
+                <p class="text-gray-300">
+                    We fuel the development of intelligent, adaptive systems for Web3 that challenge centralized paradigms and open the door to equitable technological innovation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search -->
+    <div class="flex justify-center mb-12">
+        <input
+            type="text"
+            placeholder="Search repositories..."
+            id="searchInput"
+            class="search-input px-6 py-3 rounded-lg w-full max-w-md text-gray-100 placeholder-gray-400 outline-none"
+        >
+    </div>
+
+    <!-- Repository Grid -->
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="repoGrid">
         <!-- Repositories will be inserted here -->
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-8 flex justify-center gap-4" id="pagination">
+        <button class="px-4 py-2 rounded-lg bg-sky-600 text-white disabled:opacity-50" id="prevPage">Previous</button>
+        <button class="px-4 py-2 rounded-lg bg-sky-600 text-white disabled:opacity-50" id="nextPage">Next</button>
     </div>
 
     <script>
         // JavaScript remains the same
         const ORG_NAME = 'aicryptopia';
         const EXCLUDED_REPO = 'aicryptopia.github.io';
+        const REPOS_PER_PAGE = 6;
+        let currentPage = 1;
+        let allRepos = [];
 
         async function fetchRepos() {
             try {
@@ -96,8 +218,16 @@
         }
 
         function displayRepos(repos) {
+            allRepos = repos; // Store all repos
+            displayCurrentPage();
+        }
+
+        function displayCurrentPage() {
+            const startIndex = (currentPage - 1) * REPOS_PER_PAGE;
+            const endIndex = startIndex + REPOS_PER_PAGE;
+            const currentRepos = allRepos.slice(startIndex, endIndex);
             const grid = document.getElementById('repoGrid');
-            grid.innerHTML = repos.map(repo => `
+            grid.innerHTML = currentRepos.map(repo => `
                 <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer"
                    class="repo-card rounded-xl p-6 flex flex-col">
                     <h3 class="text-xl font-semibold text-sky-400 mb-2">${repo.name}</h3>
