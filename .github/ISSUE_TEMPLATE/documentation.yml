@@ -1,0 +1,44 @@
+name: 📚 Documentation
+description: Suggest improvements or report issues in documentation
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping us improve our documentation!
+        
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type of documentation change
+      options:
+        - New documentation
+        - Improvement to existing docs
+        - Fix incorrect information
+        - Add missing information
+        - Other
+    validations:
+      required: true
+      
+  - type: textarea
+    id: description
+    attributes:
+      label: What needs to be documented?
+      description: Describe what information needs to be added, updated, or fixed.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: location
+    attributes:
+      label: Where should this documentation live?
+      description: Specify where this documentation should be placed or which existing docs need updating.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add any other context or examples that would help explain the documentation needed. 
