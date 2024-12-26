@@ -93,3 +93,38 @@ Each view uses consistent status columns:
 2. Use the same labels as the related issue
 3. Request review when ready
 4. Update status labels appropriately
+
+## Project Management
+
+### Completed Tasks ✅
+1. **Link Checking for Documentation**
+   - Implemented monthly automated checks
+   - Focused on documentation files only
+   - Configured to minimize noise and false positives
+   - Creates issues only for scheduled checks
+
+### Resolved (Not Needed) ⚡
+1. **GitHub Pages Deployment Automation**
+   - Resolved: Automatic deployment handled by GitHub
+   - Repository name `aicryptopia.github.io` enables automatic deployment
+   - No additional workflow needed
+
+### Future Considerations 🔮
+1. **Build Process and Checks**
+   - Currently not needed (no build process)
+   - To be revisited when/if we add:
+     - Bundling
+     - Transpilation
+     - Other build steps
+   - Will be implemented when actual build requirements emerge
+
+### Active Development Principles 🎯
+1. Keep processes simple and functional
+2. Avoid unnecessary complexity
+3. Add automation only when it provides clear value
+4. Focus on user and contributor experience
+
+### Next Steps
+- Continue monitoring the effectiveness of implemented workflows
+- Gather feedback from contributors
+- Adjust processes based on actual usage patterns
