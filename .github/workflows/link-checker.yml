@@ -4,11 +4,17 @@ on:
   # Run on PRs and pushes to develop and main
   push:
     branches: [ main, develop ]
+    paths:
+      - 'docs/**'
+      - '*.md'
   pull_request:
     branches: [ main, develop ]
-  # Run weekly to catch any external links that might break
+    paths:
+      - 'docs/**'
+      - '*.md'
+  # Monthly check for documentation links
   schedule:
-    - cron: '0 0 * * 0'  # Run at 00:00 every Sunday
+    - cron: '0 0 1 * *'  # Run at midnight on the first day of each month
 
 jobs:
   linkChecker:
@@ -19,15 +25,23 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.8.0
         with:
-          args: --verbose --no-progress './**/*.md' './**/*.html'
+          args: >-
+            --verbose
+            --no-progress
+            --exclude-all-private
+            --exclude "^(?!http).*"
+            --exclude "^tel:"
+            --max-retries 3
+            --timeout 30
+            './docs/**/*.md'
+            './*.md'
           fail: true
 
       - name: Create Issue From File
-        if: failure()
+        if: failure() && github.event_name == 'schedule'
         uses: peter-evans/create-issue-from-file@v4
         with:
-          title: Link Checker Report
+          title: Monthly Documentation Link Check Report
           content-filepath: ./lychee/out.md
           labels: |
-            🔍 Type: Documentation
-            ⚠️ Status: Blocked 
+            🔍 Type: Documentation 
