@@ -5,12 +5,14 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 ## Main Branches
 
 ### `main`
+
 - Production-ready code
 - Protected branch
 - Requires pull request approval
 - Only accepts merges from `develop` and `hotfix/*`
 
 ### `develop`
+
 - Main development branch
 - Protected branch
 - Requires pull request approval
@@ -20,6 +22,7 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 ## Supporting Branches
 
 ### `feature/*`
+
 - Purpose: Development of new features
 - Branch from: `develop`
 - Merge to: `develop`
@@ -27,6 +30,7 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 - Example: `feature/wallet-integration`
 
 ### `hotfix/*`
+
 - Purpose: Emergency fixes for production
 - Branch from: `main`
 - Merge to: Both `main` and `develop`
@@ -34,6 +38,7 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 - Example: `hotfix/fix-login-bug`
 
 ### `docs/*`
+
 - Purpose: Documentation updates
 - Branch from: `develop`
 - Merge to: `develop`
@@ -43,18 +48,22 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 ## Workflow Guidelines
 
 1. **Feature Development**
+
    ```
    develop �� feature/new-feature → develop
    ```
+
    - Create feature branch from `develop`
    - Develop and test feature
    - Create PR to merge back into `develop`
    - Delete feature branch after merge
 
 2. **Production Release**
+
    ```
    develop → main
    ```
+
    - Ensure all tests pass on `develop`
    - Create PR from `develop` to `main`
    - Merge after approval
@@ -72,6 +81,7 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 ## Branch Protection Rules
 
 1. `main` branch protection:
+
    - Require pull request reviews
    - Require status checks to pass
    - No direct pushes
@@ -90,4 +100,4 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 3. Reference issue numbers in commits when applicable
 4. Delete branches after merging
 5. Keep PRs focused and reasonably sized
-6. Ensure tests pass before requesting review 
+6. Ensure tests pass before requesting review

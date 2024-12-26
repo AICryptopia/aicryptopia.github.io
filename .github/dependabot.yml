@@ -1,0 +1,26 @@
+version: 2
+updates:
+  # Enable security updates for npm/yarn
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      # Check for updates monthly instead of weekly
+      interval: 'monthly'
+    # Only create pull requests for security updates
+    open-pull-requests-limit: 0
+    # Still get notifications about security updates
+    security-updates-only: true
+    labels:
+      - '🔧 Type: Maintenance'
+      - '📦 dependencies'
+
+  # Enable security updates for GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'monthly'
+    open-pull-requests-limit: 0
+    security-updates-only: true
+    labels:
+      - '🔧 Type: Maintenance'
+      - '👷 github-actions'

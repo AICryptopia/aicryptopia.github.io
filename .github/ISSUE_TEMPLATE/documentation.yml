@@ -1,13 +1,13 @@
 name: 📚 Documentation
 description: Suggest improvements or report issues in documentation
-title: "[Docs]: "
-labels: ["documentation"]
+title: '[Docs]: '
+labels: ['documentation']
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for helping us improve our documentation!
-        
+
   - type: dropdown
     id: type
     attributes:
@@ -20,7 +20,7 @@ body:
         - Other
     validations:
       required: true
-      
+
   - type: textarea
     id: description
     attributes:
@@ -28,7 +28,7 @@ body:
       description: Describe what information needs to be added, updated, or fixed.
     validations:
       required: true
-      
+
   - type: textarea
     id: location
     attributes:
@@ -36,9 +36,9 @@ body:
       description: Specify where this documentation should be placed or which existing docs need updating.
     validations:
       required: true
-      
+
   - type: textarea
     id: additional
     attributes:
       label: Additional context
-      description: Add any other context or examples that would help explain the documentation needed. 
+      description: Add any other context or examples that would help explain the documentation needed.
