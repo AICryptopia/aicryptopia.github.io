@@ -1,0 +1,33 @@
+name: Link Checker
+
+on:
+  # Run on PRs and pushes to develop and main
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  # Run weekly to catch any external links that might break
+  schedule:
+    - cron: '0 0 * * 0'  # Run at 00:00 every Sunday
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.8.0
+        with:
+          args: --verbose --no-progress './**/*.md' './**/*.html'
+          fail: true
+
+      - name: Create Issue From File
+        if: failure()
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: |
+            🔍 Type: Documentation
+            ⚠️ Status: Blocked 
