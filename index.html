@@ -98,6 +98,39 @@
         }
       }
 
+      /* Pagination button styles */
+      .pagination-btn {
+        transition: all 0.3s ease;
+        min-width: 100px;
+        min-height: 44px; /* Minimum touch target size */
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      /* Desktop hover effects */
+      @media (hover: hover) and (pointer: fine) {
+        .pagination-btn:not(:disabled):hover {
+          background-color: rgb(2, 132, 199);
+          transform: translateY(-1px);
+        }
+      }
+
+      /* Mobile touch styles */
+      @media (hover: none) {
+        .pagination-btn:not(:disabled):active {
+          transform: scale(0.98);
+          background-color: rgb(2, 132, 199);
+        }
+        #pagination {
+          padding: 1rem 0;
+          gap: 1rem;
+        }
+        .pagination-btn {
+          flex: 1;
+          max-width: 160px;
+        }
+      }
+
       /* Responsive title adjustments */
       @media (max-width: 640px) {
         .header-container {
@@ -217,10 +250,10 @@
     </div>
 
     <div class="max-w-6xl mx-auto mt-8 flex justify-center gap-4" id="pagination">
-      <button class="px-4 py-2 rounded-lg bg-sky-600 text-white disabled:opacity-50" id="prevPage">
+      <button class="pagination-btn px-4 py-2 rounded-lg bg-sky-600 text-white disabled:opacity-50" id="prevPage">
         Previous
       </button>
-      <button class="px-4 py-2 rounded-lg bg-sky-600 text-white disabled:opacity-50" id="nextPage">
+      <button class="pagination-btn px-4 py-2 rounded-lg bg-sky-600 text-white disabled:opacity-50" id="nextPage">
         Next
       </button>
     </div>
