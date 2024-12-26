@@ -11,6 +11,7 @@ Instead, please report them via email to [TBD - Add Security Email].
 You should receive a response within 48 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
 
 Please include the following information in your report:
+
 - Type of issue (e.g. buffer overflow, SQL injection, cross-site scripting, etc.)
 - Full paths of source file(s) related to the manifestation of the issue
 - The location of the affected source code (tag/branch/commit or direct URL)
@@ -48,6 +49,7 @@ When contributing to this repository:
 ## Dependencies
 
 We use the following security tools:
+
 - GitHub's Dependabot for dependency scanning
 - Regular security audits of dependencies
-- Automated security checks in our CI/CD pipeline 
+- Automated security checks in our CI/CD pipeline

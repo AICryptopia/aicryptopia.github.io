@@ -1,0 +1,12 @@
+{
+  "name": "aicryptopia.github.io",
+  "version": "1.0.0",
+  "description": "AICryptopia Organization Website",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.1.1"
+  }
+}
