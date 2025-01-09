@@ -12,5 +12,10 @@
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^25.0.1",
     "prettier": "^3.1.1"
+  },
+  "jest": {
+    "transform": {},
+    "testEnvironment": "jest-environment-jsdom",
+    "extensionsToTreatAsEsm": [".js"]
   }
 }

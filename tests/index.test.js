@@ -1,10 +1,16 @@
 /**
  * @jest-environment jsdom
  */
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 describe('Index HTML', () => {
   beforeAll(() => {
-    document.documentElement.innerHTML = require('fs').readFileSync('./index.html', 'utf8');
+    document.documentElement.innerHTML = readFileSync(join(__dirname, '..', 'index.html'), 'utf8');
   });
 
   test('document title is correct', () => {
@@ -20,7 +26,7 @@ describe('Index HTML', () => {
   test('logo link exists with correct attributes', () => {
     const logoLink = document.querySelector('link[rel="icon"]');
     expect(logoLink).toBeTruthy();
-    expect(logoLink.getAttribute('href')).toBe('aicryptopia-logo.png');
     expect(logoLink.getAttribute('type')).toBe('image/png');
+    expect(logoLink.getAttribute('href')).toBe('aicryptopia-logo.png');
   });
 }); 
