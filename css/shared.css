@@ -36,13 +36,37 @@ body {
   display: block;
 }
 
-/* Glow effect */
+/* Glow effects */
 .glow {
   background: linear-gradient(to right, #38bdf8, #0ea5e9);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+.title-gradient {
+  background: linear-gradient(to right, #38bdf8 0%, #38bdf8 20%, #FFD700 80%, #DAA520 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+.logo-glow {
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5));
+}
+
+.gold-accent {
+  color: #FFD700;
+}
+
+.gold-glow {
+  background: linear-gradient(to right, #FFD700, #DAA520);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
 /* Floating animation */
@@ -58,8 +82,59 @@ body {
   }
 }
 
-.float {
+/* Pulse Glow animation */
+@keyframes pulseGlow {
+  0% { filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5)); }
+  50% { filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.8)); }
+  100% { filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.5)); }
+}
+
+/* Rotate Float animation */
+@keyframes rotateFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+/* Breathing animation */
+@keyframes breathing {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Wave animation */
+@keyframes wave {
+  0% { transform: skew(0deg, 0deg); }
+  25% { transform: skew(1deg, 1deg); }
+  75% { transform: skew(-1deg, -1deg); }
+  100% { transform: skew(0deg, 0deg); }
+}
+
+/* Animation Classes */
+.animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: float 3s ease-in-out infinite, pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-rotate-float {
+  animation: rotateFloat 4s ease-in-out infinite;
+}
+
+.animate-breathing {
+  animation: breathing 4s ease-in-out infinite;
+}
+
+.animate-breathing-glow {
+  animation: breathing 4s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-wave {
+  animation: wave 3s ease-in-out infinite;
+  transform-origin: center;
 }
 
 /* Fade in animation */
