@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Repositories - AI Cryptopia</title>
+    <link rel="icon" type="image/png" href="/ai-crypto-logo.png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="/css/shared.css" rel="stylesheet" />
+    <style>
+      .repo-card {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        transition: all 0.3s ease;
+      }
+      .repo-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(148, 163, 184, 0.2);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+      .tag {
+        background: rgba(56, 189, 248, 0.1);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+      }
+    </style>
+  </head>
+  <body class="p-0">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Repositories Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-sky-400 mb-4">GitHub Repositories</h1>
+        <p class="text-xl text-gray-300">
+          Explore and contribute to our open-source projects
+        </p>
+      </div>
+
+      <!-- Repository Grid -->
+      <div id="repo-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Repository cards will be dynamically populated here -->
+      </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Load shared JavaScript -->
+    <script src="/js/shared.js"></script>
+
+    <!-- Repository JavaScript -->
+    <script>
+      async function fetchRepositories() {
+        try {
+          const response = await fetch('https://api.github.com/users/aicryptopia/repos');
+          const repos = await response.json();
+          
+          // Sort repositories by stars
+          repos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+          
+          const repoGrid = document.getElementById('repo-grid');
+          repoGrid.innerHTML = repos.map(repo => `
+            <div class="repo-card rounded-xl p-6">
+              <div class="flex items-center mb-4">
+                <div class="text-sky-400 mr-4">
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-sky-400">${repo.name}</h3>
+              </div>
+              <p class="text-gray-300 mb-4">
+                ${repo.description || 'No description available'}
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">
+                  <span class="mr-1">⭐</span>${repo.stargazers_count}
+                </span>
+                <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">
+                  <span class="mr-1">🍴</span>${repo.forks_count}
+                </span>
+                ${repo.language ? `
+                  <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">
+                    ${repo.language}
+                  </span>
+                ` : ''}
+              </div>
+              <a
+                href="${repo.html_url}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
+              >
+                View Repository
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </a>
+            </div>
+          `).join('');
+        } catch (error) {
+          console.error('Error fetching repositories:', error);
+          document.getElementById('repo-grid').innerHTML = `
+            <div class="col-span-full text-center text-gray-300">
+              <p>Failed to load repositories. Please try again later.</p>
+            </div>
+          `;
+        }
+      }
+
+      // Fetch repositories when the page loads
+      fetchRepositories();
+    </script>
+  </body>
+</html> 

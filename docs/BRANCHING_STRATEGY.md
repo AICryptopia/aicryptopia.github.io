@@ -45,25 +45,51 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 - Naming convention: `docs/descriptive-doc-name`
 - Example: `docs/api-documentation`
 
+## Complete Feature Branch Workflow
+
+1. **Start Feature Development**
+   ```bash
+   git checkout develop
+   git pull origin develop              # Ensure develop is up-to-date
+   git checkout -b feature/new-feature  # Create and switch to feature branch
+   ```
+
+2. **Work on Feature**
+   ```bash
+   # Make changes, then:
+   git add .                           # Stage changes
+   git commit -m "feat: add feature"   # Commit changes
+   git push origin feature/new-feature # Push to remote
+   ```
+
+3. **Create Pull Request**
+   - Create PR from `feature/new-feature` to `develop`
+   - Ensure CI checks pass
+   - Get code review and approval
+   - Merge PR on GitHub
+
+4. **Post-Merge Cleanup**
+   ```bash
+   git checkout develop                # Switch to develop
+   git pull origin develop            # Sync local develop
+   git branch -d feature/new-feature  # Delete local feature branch
+   ```
+
 ## Workflow Guidelines
 
 1. **Feature Development**
-
    ```
-   develop �� feature/new-feature → develop
+   develop → feature/new-feature → develop
    ```
-
    - Create feature branch from `develop`
    - Develop and test feature
    - Create PR to merge back into `develop`
    - Delete feature branch after merge
 
 2. **Production Release**
-
    ```
    develop → main
    ```
-
    - Ensure all tests pass on `develop`
    - Create PR from `develop` to `main`
    - Merge after approval
@@ -81,7 +107,6 @@ This document outlines the Git branching strategy used in the AICryptopia projec
 ## Branch Protection Rules
 
 1. `main` branch protection:
-
    - Require pull request reviews
    - Require status checks to pass
    - No direct pushes

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - AI Cryptopia</title>
+    <link rel="icon" type="image/png" href="/ai-crypto-logo.png" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="/css/shared.css" rel="stylesheet" />
+    <style>
+      .blog-card {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        transition: all 0.3s ease;
+      }
+      .blog-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(148, 163, 184, 0.2);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+      .tag {
+        background: rgba(56, 189, 248, 0.1);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+      }
+    </style>
+  </head>
+  <body class="p-0">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Blog Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-sky-400 mb-4">Blog</h1>
+        <p class="text-xl text-gray-300">
+          Insights, updates, and deep dives into AI and Web3 technology
+        </p>
+      </div>
+
+      <!-- Featured Post -->
+      <div class="blog-card rounded-xl p-8 mb-16">
+        <div class="sm:flex items-center">
+          <div class="sm:w-2/3 pr-8">
+            <div class="flex items-center mb-4">
+              <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">Featured</span>
+              <span class="text-gray-400 text-sm ml-4">January 15, 2024</span>
+            </div>
+            <h2 class="text-3xl font-bold text-sky-400 mb-4">
+              The Future of AI in Decentralized Systems
+            </h2>
+            <p class="text-gray-300 mb-6">
+              Exploring how artificial intelligence is reshaping the landscape of decentralized
+              applications and what this means for the future of Web3 technology.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">AI/ML</span>
+              <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">Web3</span>
+              <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">Technology</span>
+            </div>
+            <a
+              href="#"
+              class="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
+            >
+              Read More
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="sm:w-1/3 mt-6 sm:mt-0">
+            <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
+              <div class="w-full h-48 bg-slate-800 rounded-xl"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Blog Card -->
+        <div class="blog-card rounded-xl p-6">
+          <div class="flex items-center mb-4">
+            <span class="text-gray-400 text-sm">January 10, 2024</span>
+          </div>
+          <h3 class="text-xl font-bold text-sky-400 mb-3">
+            Understanding AI Governance Models
+          </h3>
+          <p class="text-gray-300 mb-4">
+            A comprehensive guide to different AI governance models and their implementation in
+            decentralized systems.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">Governance</span>
+            <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">AI</span>
+          </div>
+          <a
+            href="#"
+            class="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
+          >
+            Read More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Blog Card -->
+        <div class="blog-card rounded-xl p-6">
+          <div class="flex items-center mb-4">
+            <span class="text-gray-400 text-sm">January 5, 2024</span>
+          </div>
+          <h3 class="text-xl font-bold text-sky-400 mb-3">
+            The Role of Smart Contracts in AI Systems
+          </h3>
+          <p class="text-gray-300 mb-4">
+            Exploring how smart contracts can be used to create transparent and accountable AI
+            systems on the blockchain.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">Smart Contracts</span>
+            <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">Blockchain</span>
+          </div>
+          <a
+            href="#"
+            class="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
+          >
+            Read More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Blog Card -->
+        <div class="blog-card rounded-xl p-6">
+          <div class="flex items-center mb-4">
+            <span class="text-gray-400 text-sm">January 1, 2024</span>
+          </div>
+          <h3 class="text-xl font-bold text-sky-400 mb-3">
+            Building Decentralized AI Applications
+          </h3>
+          <p class="text-gray-300 mb-4">
+            A step-by-step guide to creating decentralized applications that leverage AI
+            capabilities while maintaining privacy and security.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">Development</span>
+            <span class="tag text-sky-400 text-sm px-3 py-1 rounded-full">Tutorial</span>
+          </div>
+          <a
+            href="#"
+            class="inline-flex items-center text-sky-400 hover:text-sky-300 transition-colors"
+          >
+            Read More
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex justify-center mt-12">
+        <button
+          class="px-4 py-2 text-gray-400 hover:text-sky-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled
+        >
+          Previous
+        </button>
+        <span class="px-4 py-2 text-sky-400">1</span>
+        <button class="px-4 py-2 text-gray-400 hover:text-sky-400 transition-colors">
+          Next
+        </button>
+      </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Load shared JavaScript -->
+    <script src="/js/shared.js"></script>
+  </body>
+</html> 
