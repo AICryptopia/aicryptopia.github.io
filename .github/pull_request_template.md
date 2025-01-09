@@ -1,25 +1,9 @@
-## Overview
-<!-- Brief description of your changes -->
+## Pull Request
 
-## Strategic Pillar
-<!-- Which pillar does this PR align with? Delete non-applicable ones -->
-- BUILD (Technical)
-- MOTIVATE (Community)
-- PROMOTE (Marketing)
+Type: [Feature/Fix/Documentation/Refactor]
 
-## Type
-<!-- What kind of change is this? Delete non-applicable ones -->
-- Feature
-- Fix
-- Documentation
-- Refactor
+Strategic Pillar: [BUILD/MOTIVATE/PROMOTE]
 
-## Related Issue
-<!-- Link the issue this PR addresses using #issue-number -->
-Closes #
+Description:
 
-## Checklist
-- [ ] Tested locally
-- [ ] Updated documentation (if needed)
-- [ ] Followed our coding standards
-- [ ] Rebased on latest develop branch 
+Related Issue: # 
