@@ -2,20 +2,14 @@
   "name": "aicryptopia.github.io",
   "version": "1.0.0",
   "description": "AICryptopia Organization Website",
-  "type": "module",
   "scripts": {
     "format": "prettier --write .",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "jest"
   },
   "devDependencies": {
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^25.0.1",
     "prettier": "^3.1.1"
-  },
-  "jest": {
-    "transform": {},
-    "testEnvironment": "jest-environment-jsdom",
-    "extensionsToTreatAsEsm": [".js"]
   }
 }
