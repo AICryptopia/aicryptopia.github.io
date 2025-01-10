@@ -1,6 +1,6 @@
 # AICryptopia Organization Website
 
-<img src="aicryptopia-logo.png" alt="AICryptopia Logo" width="200"/>
+<img src="images/logos/aicryptopia-logo.png" alt="AICryptopia Logo" width="200"/>
 
 ## Overview
 AICryptopia is an open-source organization focused on building AI-powered tools and applications on Web3. This repository hosts our organization's website and documentation.

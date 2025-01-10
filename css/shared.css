@@ -92,11 +92,22 @@ body {
 }
 
 .title-gradient {
-  background: linear-gradient(to right, #38bdf8 0%, #38bdf8 20%, #FFD700 80%, #DAA520 100%);
+  background: linear-gradient(to right, #38bdf8, #0ea5e9, #ffd700, #ff8c00);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  line-height: 1.2;
+  padding: 0.25rem 0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .logo-glow {
