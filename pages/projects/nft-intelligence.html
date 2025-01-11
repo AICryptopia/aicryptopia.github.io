@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>NFT Intelligence Platform - AI Cryptopia Projects</title>
+    <meta name="description" content="An AI-powered platform for analyzing NFT markets, predicting trends, and providing comprehensive insights for collectors and creators." />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logos/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="/css/shared.css" rel="stylesheet" />
+    <style>
+      .project-content {
+        max-width: 70ch;
+        line-height: 1.7;
+      }
+      .project-content p {
+        margin-bottom: 1.5rem;
+        color: rgba(226, 232, 240, 0.9);
+      }
+      .project-content h2 {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #38bdf8;
+      }
+      .project-content h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #38bdf8;
+      }
+      .project-content ul {
+        margin-bottom: 1.5rem;
+        list-style-type: disc;
+        padding-left: 1.5rem;
+      }
+      .project-content li {
+        margin-bottom: 0.5rem;
+        color: rgba(226, 232, 240, 0.9);
+      }
+      .timeline-item {
+        position: relative;
+        padding-left: 2rem;
+        padding-bottom: 2rem;
+        border-left: 2px solid rgba(56, 189, 248, 0.2);
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -0.5rem;
+        top: 0;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: #38bdf8;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      }
+      .timeline-item:last-child {
+        border-left: none;
+      }
+      .metric-card {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        transition: all 0.3s ease;
+      }
+      .metric-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+      .hero-title {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8),
+                    4px 4px 8px rgba(0,0,0,0.6),
+                    0 0 30px rgba(56, 189, 248, 0.8);
+        position: relative;
+      }
+      .hero-description {
+        text-shadow: 0 1px 2px rgba(0,0,0,0.5),
+                    0 2px 4px rgba(0,0,0,0.5);
+      }
+      .status-tag {
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        background: rgba(56, 189, 248, 0.3);
+        border: 2px solid rgba(56, 189, 248, 0.5);
+      }
+      .status-tag:hover {
+        background: rgba(56, 189, 248, 0.4);
+      }
+      .nft-title-gradient {
+        color: #f97316;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8),
+                    4px 4px 8px rgba(0,0,0,0.6),
+                    0 0 30px rgba(56, 189, 248, 0.8);
+        position: relative;
+        display: inline-block;
+      }
+
+      .nft-title-gradient::after {
+        content: "NFT Intelligence Platform";
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        color: #f97316;
+        filter: blur(12px);
+      }
+    </style>
+  </head>
+  <body class="p-0">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="p-0">
+      <!-- Project Hero Section -->
+      <section class="relative py-32 mb-12 overflow-hidden">
+        <div class="absolute inset-0">
+          <!-- Hero Background Image -->
+          <img 
+            src="/images/hero/nft-intelligence.png" 
+            alt="NFT Intelligence Platform"
+            class="w-full h-full object-cover"
+          />
+          <!-- Overlay Gradient -->
+          <div class="absolute inset-0 bg-black/70"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-900/95"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(56,189,248,0.1) 0%, transparent 70%)"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <div class="flex items-center justify-center mb-6">
+              <span class="status-tag text-sky-100 text-sm font-bold px-4 py-2 rounded-full transition-all duration-300">
+                Planning Phase
+              </span>
+            </div>
+            <h1 class="hero-title text-4xl sm:text-5xl font-bold nft-title-gradient mb-6">NFT Intelligence Platform</h1>
+            <p class="hero-description text-xl text-white max-w-3xl mx-auto mb-8 font-semibold">
+              Revolutionizing NFT markets with AI-powered analytics, trend prediction, and comprehensive
+              insights for collectors and creators.
+            </p>
+          </div>
+          <!-- Quick Stats -->
+          <div class="flex flex-wrap justify-center gap-8 mt-12">
+            <div class="glass rounded-lg px-6 py-3 backdrop-blur-lg bg-slate-900/70 shadow-lg shadow-sky-500/10">
+              <span class="text-sky-400 mr-2">🎯</span>
+              <span class="text-slate-100 font-semibold">Research Phase</span>
+            </div>
+            <div class="glass rounded-lg px-6 py-3 backdrop-blur-lg bg-slate-900/70 shadow-lg shadow-sky-500/10">
+              <span class="text-sky-400 mr-2">👥</span>
+              <span class="text-slate-100 font-semibold">Early Access</span>
+            </div>
+            <div class="glass rounded-lg px-6 py-3 backdrop-blur-lg bg-slate-900/70 shadow-lg shadow-sky-500/10">
+              <span class="text-sky-400 mr-2">💎</span>
+              <span class="text-slate-100 font-semibold">NFT Rewards</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Content -->
+      <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="project-content mx-auto">
+          <h2>Project Overview</h2>
+          <p>
+            The NFT Intelligence Platform leverages artificial intelligence to provide comprehensive 
+            market analysis, trend predictions, and actionable insights for NFT collectors, creators, 
+            and investors. By combining advanced machine learning algorithms with blockchain data, 
+            we aim to bring unprecedented intelligence to the NFT ecosystem.
+          </p>
+
+          <h2>Goals and Objectives</h2>
+          <ul>
+            <li>Develop AI models for NFT market trend prediction</li>
+            <li>Create comprehensive analytics dashboards</li>
+            <li>Implement rarity and valuation algorithms</li>
+            <li>Build creator success prediction tools</li>
+            <li>Design community-driven insights platform</li>
+          </ul>
+
+          <h2>Value Proposition</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div class="metric-card rounded-xl p-6">
+              <h3 class="text-xl font-bold mb-4">For Collectors</h3>
+              <ul class="list-none p-0">
+                <li class="mb-2">🎯 Market trend insights</li>
+                <li class="mb-2">💡 Investment opportunities</li>
+                <li class="mb-2">📊 Portfolio analytics</li>
+                <li class="mb-2">🔍 Rarity analysis</li>
+              </ul>
+            </div>
+            <div class="metric-card rounded-xl p-6">
+              <h3 class="text-xl font-bold mb-4">For Creators</h3>
+              <ul class="list-none p-0">
+                <li class="mb-2">📈 Success metrics</li>
+                <li class="mb-2">🎨 Creation insights</li>
+                <li class="mb-2">👥 Community analytics</li>
+                <li class="mb-2">💫 Marketing optimization</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>Building Blocks</h2>
+          <h3>1. Data Collection Layer</h3>
+          <ul>
+            <li>NFT marketplace data aggregation</li>
+            <li>Social media sentiment analysis</li>
+            <li>Creator and collection metrics</li>
+            <li>Historical price tracking</li>
+          </ul>
+
+          <h3>2. AI Analysis Layer</h3>
+          <ul>
+            <li>Trend prediction models</li>
+            <li>Rarity calculation algorithms</li>
+            <li>Success factor analysis</li>
+            <li>Market sentiment analysis</li>
+          </ul>
+
+          <h3>3. User Interface Layer</h3>
+          <ul>
+            <li>Interactive analytics dashboard</li>
+            <li>Portfolio management tools</li>
+            <li>Creator studio features</li>
+            <li>Community insights portal</li>
+          </ul>
+
+          <h2>Development Roadmap</h2>
+          <div class="space-y-8 my-8">
+            <div class="timeline-item">
+              <h3 class="text-xl font-bold mb-2">Phase 1: Foundation (Q3 2025)</h3>
+              <ul>
+                <li>Establish data collection pipeline</li>
+                <li>Develop core analytics models</li>
+                <li>Create MVP dashboard</li>
+                <li>Begin early access program</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h3 class="text-xl font-bold mb-2">Phase 2: Advanced Features (Q4 2025)</h3>
+              <ul>
+                <li>Launch prediction models</li>
+                <li>Implement portfolio tools</li>
+                <li>Add creator features</li>
+                <li>Start NFT rewards program</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h3 class="text-xl font-bold mb-2">Phase 3: Ecosystem Growth (Q1 2026)</h3>
+              <ul>
+                <li>Expand marketplace integrations</li>
+                <li>Launch mobile application</li>
+                <li>Add social features</li>
+                <li>Scale community programs</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>Success Metrics</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+            <div class="metric-card rounded-xl p-6 text-center">
+              <h3 class="text-2xl font-bold mb-2">User Base</h3>
+              <p class="text-3xl font-bold text-sky-400 mb-2">100K+</p>
+              <p class="text-sm text-gray-400">Active Users Target</p>
+            </div>
+            <div class="metric-card rounded-xl p-6 text-center">
+              <h3 class="text-2xl font-bold mb-2">Prediction Accuracy</h3>
+              <p class="text-3xl font-bold text-sky-400 mb-2">80%</p>
+              <p class="text-sm text-gray-400">Trend Analysis</p>
+            </div>
+            <div class="metric-card rounded-xl p-6 text-center">
+              <h3 class="text-2xl font-bold mb-2">Collections</h3>
+              <p class="text-3xl font-bold text-sky-400 mb-2">10K+</p>
+              <p class="text-sm text-gray-400">Tracked Collections</p>
+            </div>
+          </div>
+
+          <h2>Getting Involved</h2>
+          <h3>Join Early Access</h3>
+          <p>
+            We're currently accepting applications for our early access program. Join us to shape the 
+            future of NFT analytics and receive exclusive benefits, including early platform access 
+            and special NFT rewards.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script src="/js/shared.js"></script>
+  </body>
+</html> 
