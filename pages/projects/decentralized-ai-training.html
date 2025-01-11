@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Decentralized AI Training - AI Cryptopia Projects</title>
+    <meta name="description" content="A revolutionary platform for decentralized AI model training, leveraging blockchain technology to create a collaborative and incentivized ecosystem for AI development." />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logos/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="/css/shared.css" rel="stylesheet" />
+    <style>
+      .project-content {
+        max-width: 70ch;
+        line-height: 1.7;
+      }
+      .project-content p {
+        margin-bottom: 1.5rem;
+        color: rgba(226, 232, 240, 0.9);
+      }
+      .project-content h2 {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #38bdf8;
+      }
+      .project-content h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #38bdf8;
+      }
+      .project-content ul {
+        margin-bottom: 1.5rem;
+        list-style-type: disc;
+        padding-left: 1.5rem;
+      }
+      .project-content li {
+        margin-bottom: 0.5rem;
+        color: rgba(226, 232, 240, 0.9);
+      }
+      .timeline-item {
+        position: relative;
+        padding-left: 2rem;
+        padding-bottom: 2rem;
+        border-left: 2px solid rgba(56, 189, 248, 0.2);
+      }
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -0.5rem;
+        top: 0;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background: #38bdf8;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      }
+      .timeline-item:last-child {
+        border-left: none;
+      }
+      .metric-card {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        transition: all 0.3s ease;
+      }
+      .metric-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+      .hero-title {
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8),
+                    4px 4px 8px rgba(0,0,0,0.6),
+                    0 0 30px rgba(56, 189, 248, 0.8);
+        position: relative;
+      }
+      .hero-description {
+        text-shadow: 0 1px 2px rgba(0,0,0,0.5),
+                    0 2px 4px rgba(0,0,0,0.5);
+      }
+      .status-tag {
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        background: rgba(56, 189, 248, 0.3);
+        border: 2px solid rgba(56, 189, 248, 0.5);
+      }
+      .status-tag:hover {
+        background: rgba(56, 189, 248, 0.4);
+      }
+      .dai-title-gradient {
+        color: #f97316;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8),
+                    4px 4px 8px rgba(0,0,0,0.6),
+                    0 0 30px rgba(56, 189, 248, 0.8);
+        position: relative;
+        display: inline-block;
+      }
+
+      .dai-title-gradient::after {
+        content: "Decentralized AI Training";
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        color: #f97316;
+        filter: blur(12px);
+      }
+    </style>
+  </head>
+  <body class="p-0">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="p-0">
+      <!-- Project Hero Section -->
+      <section class="relative py-32 mb-12 overflow-hidden">
+        <div class="absolute inset-0">
+          <!-- Hero Background Image -->
+          <img 
+            src="/images/hero/decentralized-ai-training.png" 
+            alt="Decentralized AI Training"
+            class="w-full h-full object-cover"
+          />
+          <!-- Overlay Gradient -->
+          <div class="absolute inset-0 bg-black/70"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-900/95"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(56,189,248,0.1) 0%, transparent 70%)"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <div class="flex items-center justify-center mb-6">
+              <span class="status-tag text-sky-100 text-sm font-bold px-4 py-2 rounded-full transition-all duration-300">
+                Planning Phase
+              </span>
+            </div>
+            <h1 class="hero-title text-4xl sm:text-5xl font-bold dai-title-gradient mb-6">Decentralized AI Training</h1>
+            <p class="hero-description text-xl text-white max-w-3xl mx-auto mb-8 font-semibold">
+              Revolutionizing AI model training through decentralized computing power, data sharing, and 
+              collaborative development incentivized by blockchain technology.
+            </p>
+          </div>
+          <!-- Quick Stats -->
+          <div class="flex flex-wrap justify-center gap-8 mt-12">
+            <div class="glass rounded-lg px-6 py-3 backdrop-blur-lg bg-slate-900/70 shadow-lg shadow-sky-500/10">
+              <span class="text-sky-400 mr-2">💻</span>
+              <span class="text-slate-100 font-semibold">Distributed Computing</span>
+            </div>
+            <div class="glass rounded-lg px-6 py-3 backdrop-blur-lg bg-slate-900/70 shadow-lg shadow-sky-500/10">
+              <span class="text-sky-400 mr-2">🔗</span>
+              <span class="text-slate-100 font-semibold">Blockchain Rewards</span>
+            </div>
+            <div class="glass rounded-lg px-6 py-3 backdrop-blur-lg bg-slate-900/70 shadow-lg shadow-sky-500/10">
+              <span class="text-sky-400 mr-2">🤝</span>
+              <span class="text-slate-100 font-semibold">Collaborative Training</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Content -->
+      <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="project-content mx-auto">
+          <h2>Project Overview</h2>
+          <p>
+            The Decentralized AI Training platform aims to revolutionize how AI models are trained by creating 
+            a distributed network of computing resources. By leveraging blockchain technology, we enable secure, 
+            transparent, and incentivized collaboration in AI model development while ensuring data privacy and 
+            fair compensation for contributors.
+          </p>
+
+          <h2>Goals and Objectives</h2>
+          <ul>
+            <li>Create a decentralized computing network for AI training</li>
+            <li>Implement secure data sharing protocols</li>
+            <li>Develop fair reward distribution mechanisms</li>
+            <li>Enable collaborative model improvement</li>
+            <li>Ensure data privacy and security</li>
+          </ul>
+
+          <h2>Value Proposition</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+            <div class="metric-card rounded-xl p-6">
+              <h3 class="text-xl font-bold mb-4">For AI Developers</h3>
+              <ul class="list-none p-0">
+                <li class="mb-2">💪 Scalable computing power</li>
+                <li class="mb-2">📊 Diverse training data</li>
+                <li class="mb-2">🔒 Privacy-preserving training</li>
+                <li class="mb-2">💡 Collaborative improvement</li>
+              </ul>
+            </div>
+            <div class="metric-card rounded-xl p-6">
+              <h3 class="text-xl font-bold mb-4">For Contributors</h3>
+              <ul class="list-none p-0">
+                <li class="mb-2">💰 Fair compensation</li>
+                <li class="mb-2">🖥️ Resource utilization</li>
+                <li class="mb-2">🛡️ Data sovereignty</li>
+                <li class="mb-2">🌟 Community participation</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>Building Blocks</h2>
+          <h3>1. Network Layer</h3>
+          <ul>
+            <li>Distributed computing network</li>
+            <li>Peer-to-peer communication</li>
+            <li>Resource allocation system</li>
+            <li>Node validation mechanism</li>
+          </ul>
+
+          <h3>2. Training Layer</h3>
+          <ul>
+            <li>Federated learning protocols</li>
+            <li>Model versioning system</li>
+            <li>Progress tracking</li>
+            <li>Quality assurance checks</li>
+          </ul>
+
+          <h3>3. Incentive Layer</h3>
+          <ul>
+            <li>Token reward system</li>
+            <li>Contribution metrics</li>
+            <li>Reputation system</li>
+            <li>Governance mechanism</li>
+          </ul>
+
+          <h2>Development Roadmap</h2>
+          <div class="space-y-8 my-8">
+            <div class="timeline-item">
+              <h3 class="text-xl font-bold mb-2">Phase 1: Foundation (Q4 2025)</h3>
+              <ul>
+                <li>Develop core network architecture</li>
+                <li>Implement basic training protocols</li>
+                <li>Create MVP with test network</li>
+                <li>Launch initial node network</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h3 class="text-xl font-bold mb-2">Phase 2: Enhancement (Q1 2026)</h3>
+              <ul>
+                <li>Add advanced training features</li>
+                <li>Implement token economics</li>
+                <li>Launch governance system</li>
+                <li>Expand node network</li>
+              </ul>
+            </div>
+            <div class="timeline-item">
+              <h3 class="text-xl font-bold mb-2">Phase 3: Scaling (Q2 2026)</h3>
+              <ul>
+                <li>Scale network capacity</li>
+                <li>Add enterprise features</li>
+                <li>Implement advanced security</li>
+                <li>Launch partner program</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2>Success Metrics</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+            <div class="metric-card rounded-xl p-6 text-center">
+              <h3 class="text-2xl font-bold mb-2">Network Size</h3>
+              <p class="text-3xl font-bold text-sky-400 mb-2">10K+</p>
+              <p class="text-sm text-gray-400">Active Nodes</p>
+            </div>
+            <div class="metric-card rounded-xl p-6 text-center">
+              <h3 class="text-2xl font-bold mb-2">Processing Power</h3>
+              <p class="text-3xl font-bold text-sky-400 mb-2">1M+</p>
+              <p class="text-sm text-gray-400">TFLOPS</p>
+            </div>
+            <div class="metric-card rounded-xl p-6 text-center">
+              <h3 class="text-2xl font-bold mb-2">Projects</h3>
+              <p class="text-3xl font-bold text-sky-400 mb-2">500+</p>
+              <p class="text-sm text-gray-400">Active Training</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="/js/shared.js"></script>
+  </body>
+</html> 
