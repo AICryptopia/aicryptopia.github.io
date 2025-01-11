@@ -5,7 +5,7 @@
       <!-- Logo and Brand -->
       <div class="flex items-center">
         <a href="/" class="flex items-center space-x-3 group">
-          <img src="/ai-crypto-logo.png" alt="AI Cryptopia Logo" 
+          <img src="/images/logos/ai-crypto-logo.png" alt="AI Cryptopia Logo" 
                class="h-10 w-10 transition-all duration-300 ease-in-out 
                       filter brightness-110 group-hover:brightness-125 
                       group-hover:scale-110 logo-glow">
@@ -23,12 +23,16 @@
         </a>
         <!-- Resources Dropdown -->
         <div class="dropdown relative group">
-          <button class="text-gray-300 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors inline-flex items-center">
-            Resources
-            <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
+          <div class="flex items-center">
+            <a href="/pages/resources.html" class="text-gray-300 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
+              Resources
+            </a>
+            <button class="text-gray-300 hover:text-sky-400 p-1 text-sm transition-colors">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
           <div class="dropdown-content mt-2">
             <a href="/pages/resources/documentation.html" class="block px-4 py-3 text-sm text-gray-300 hover:text-sky-400 hover:bg-slate-800">
               Documentation
@@ -64,8 +68,9 @@
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <a href="/pages/blog.html" class="text-gray-300 hover:text-sky-400 block px-3 py-2 text-base font-medium">Blog</a>
         <a href="/pages/projects.html" class="text-gray-300 hover:text-sky-400 block px-3 py-2 text-base font-medium">Projects</a>
-        <a href="/pages/resources/documentation.html" class="text-gray-300 hover:text-sky-400 block px-3 py-2 text-base font-medium">Documentation</a>
-        <a href="/pages/resources/repositories.html" class="text-gray-300 hover:text-sky-400 block px-3 py-2 text-base font-medium">GitHub Repositories</a>
+        <a href="/pages/resources.html" class="text-gray-300 hover:text-sky-400 block px-3 py-2 text-base font-medium">Resources</a>
+        <a href="/pages/resources/documentation.html" class="text-gray-300 hover:text-sky-400 block px-3 py-2 text-base font-medium pl-6">Documentation</a>
+        <a href="/pages/resources/repositories.html" class="text-gray-300 hover:text-sky-400 block px-3 py-2 text-base font-medium pl-6">GitHub Repositories</a>
         <a href="https://github.com/aicryptopia" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-sky-400 block px-3 py-2 text-base font-medium">GitHub</a>
       </div>
     </div>

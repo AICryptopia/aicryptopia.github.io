@@ -1,9 +1,23 @@
 // Function to load HTML content from a file
 async function loadComponent(url, containerId) {
   try {
-    const response = await fetch(url);
+    // Add timestamp to prevent caching
+    const nocacheUrl = `${url}?v=${new Date().getTime()}`;
+    const response = await fetch(nocacheUrl, {
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
+    });
     const html = await response.text();
-    document.getElementById(containerId).innerHTML = html;
+    const container = document.getElementById(containerId);
+    
+    // Special handling for footer to prevent inheriting document behavior
+    if (containerId === 'footer-container') {
+      container.outerHTML = html;  // Replace the entire container
+    } else {
+      container.innerHTML = html;
+    }
 
     // If this is the header, initialize the mobile menu functionality
     if (containerId === 'header-container') {
