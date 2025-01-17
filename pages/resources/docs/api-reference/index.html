@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>API Reference - AI Cryptopia Documentation</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logos/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="/css/shared.css" rel="stylesheet" />
+    <style>
+      .doc-content h2 {
+        @apply text-2xl font-bold mb-4 text-sky-400;
+      }
+      .doc-content h3 {
+        @apply text-xl font-semibold mb-3 text-sky-300;
+      }
+      .doc-content h4 {
+        @apply text-lg font-semibold mb-2 text-sky-200;
+      }
+      .doc-content p {
+        @apply text-gray-300 mb-4;
+      }
+      .doc-content ul {
+        @apply list-disc list-inside mb-4 text-gray-300;
+      }
+      .doc-content code {
+        @apply bg-slate-800 px-2 py-1 rounded text-sky-300;
+      }
+      .doc-content pre {
+        @apply bg-slate-800 p-4 rounded-lg mb-4 overflow-x-auto;
+      }
+      .api-method {
+        @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium mr-2;
+      }
+      .api-method.get {
+        @apply bg-green-900/50 text-green-400 border border-green-700;
+      }
+      .api-method.post {
+        @apply bg-blue-900/50 text-blue-400 border border-blue-700;
+      }
+      .api-method.put {
+        @apply bg-yellow-900/50 text-yellow-400 border border-yellow-700;
+      }
+      .api-method.delete {
+        @apply bg-red-900/50 text-red-400 border border-red-700;
+      }
+      .api-endpoint {
+        @apply mb-8 p-6 rounded-lg bg-slate-800/50 border border-slate-700;
+      }
+      .response-example {
+        @apply mt-4 p-4 rounded bg-slate-900 border border-slate-800;
+      }
+    </style>
+  </head>
+  <body class="p-0">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="p-0">
+      <!-- Documentation Hero Section -->
+      <section class="relative py-12 mb-8 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0">
+          <!-- Circuit-like background pattern -->
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-sky-900/50 to-slate-900">
+            <div class="absolute inset-0 opacity-30" style="background-image: url('data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%230EA5E9\' fill-opacity=\'0.15\'%3E%3Cpath d=\'M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 12V8zm0 4L52 0h2L40 16v-4zm0 4L56 0h2L40 20v-4zm0 4L60 0h2L40 24v-4zm0 4L64 0h2L40 28v-4zm0 4L68 0h2L40 32v-4zm0 4L72 0h2L40 36v-4zm0 4L76 0h2L40 40v-4zM12 0L0 12V0h12zm16 0L0 28V0h28zm12 0L0 40V0h40z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+            </div>
+          </div>
+          <!-- Animated glow effect -->
+          <div class="absolute inset-0 bg-gradient-to-t from-sky-500/10 via-transparent to-transparent animate-pulse" style="animation-duration: 3s;"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center space-x-2 text-gray-400 mb-4">
+            <a href="/pages/resources/documentation.html" class="hover:text-sky-400">Documentation</a>
+            <span>/</span>
+            <span class="text-sky-400">API Reference</span>
+          </div>
+          <h1 class="text-4xl font-bold title-gradient mb-4">API Reference</h1>
+          <p class="text-xl text-gray-300">Complete documentation of AI Cryptopia's API endpoints and usage</p>
+        </div>
+      </section>
+
+      <!-- Documentation Content -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <!-- Sidebar Navigation -->
+          <div class="lg:col-span-1">
+            <div class="sticky top-8">
+              <nav class="space-y-1">
+                <a href="#introduction" class="block px-3 py-2 text-sky-400 hover:bg-slate-800 rounded-lg">Introduction</a>
+                <a href="#authentication" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">Authentication</a>
+                <a href="#ai-services" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">AI Services</a>
+                <a href="#blockchain" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">Blockchain</a>
+                <a href="#user" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">User Management</a>
+                <a href="#data" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">Data Services</a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Main Content -->
+          <div class="lg:col-span-3 doc-content">
+            <section id="introduction" class="mb-12">
+              <h2>Introduction</h2>
+              <p>
+                Welcome to the AI Cryptopia API documentation. Our API is organized around REST principles, uses JSON for request/response payloads, and relies on standard HTTP response codes.
+              </p>
+              <div class="bg-slate-800/50 p-4 rounded-lg mb-4">
+                <h4>Base URL</h4>
+                <code>https://api.aicryptopia.io/v1</code>
+              </div>
+              <p>
+                <strong class="text-sky-400">Note:</strong> This API documentation outlines our planned endpoints. The API is currently under development and will be implemented in future releases.
+              </p>
+            </section>
+
+            <section id="authentication" class="mb-12">
+              <h2>Authentication</h2>
+              <p>
+                AI Cryptopia uses JWT tokens for API authentication. You'll need to include the token in the Authorization header:
+              </p>
+              <pre><code>Authorization: Bearer YOUR_JWT_TOKEN</code></pre>
+              
+              <div class="api-endpoint">
+                <span class="api-method post">POST</span>
+                <code>/auth/login</code>
+                <p class="mt-2">Authenticate user and receive JWT token</p>
+                <pre><code>{
+  "email": "user@example.com",
+  "password": "secure_password"
+}</code></pre>
+                <div class="response-example">
+                  <h4>Response</h4>
+                  <pre><code>{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "id": "user_123",
+    "email": "user@example.com"
+  }
+}</code></pre>
+                </div>
+              </div>
+            </section>
+
+            <section id="ai-services" class="mb-12">
+              <h2>AI Services</h2>
+              
+              <div class="api-endpoint">
+                <span class="api-method post">POST</span>
+                <code>/ai/analyze</code>
+                <p class="mt-2">Analyze data using AI models</p>
+                <pre><code>{
+  "data": "Data to analyze",
+  "model": "sentiment_analysis",
+  "parameters": {
+    "confidence_threshold": 0.8
+  }
+}</code></pre>
+              </div>
+
+              <div class="api-endpoint">
+                <span class="api-method post">POST</span>
+                <code>/ai/train</code>
+                <p class="mt-2">Submit training data for AI models</p>
+                <pre><code>{
+  "model_id": "model_123",
+  "training_data": [...],
+  "parameters": {
+    "epochs": 10,
+    "batch_size": 32
+  }
+}</code></pre>
+              </div>
+            </section>
+
+            <section id="blockchain" class="mb-12">
+              <h2>Blockchain</h2>
+              
+              <div class="api-endpoint">
+                <span class="api-method get">GET</span>
+                <code>/blockchain/transactions/{address}</code>
+                <p class="mt-2">Get transaction history for an address</p>
+                <div class="response-example">
+                  <h4>Response</h4>
+                  <pre><code>{
+  "address": "0x...",
+  "transactions": [
+    {
+      "hash": "0x...",
+      "value": "1.5 ETH",
+      "timestamp": "2024-01-17T..."
+    }
+  ]
+}</code></pre>
+                </div>
+              </div>
+
+              <div class="api-endpoint">
+                <span class="api-method post">POST</span>
+                <code>/blockchain/smart-contracts/deploy</code>
+                <p class="mt-2">Deploy a new smart contract</p>
+                <pre><code>{
+  "contract_name": "AIModel",
+  "parameters": {
+    "initial_state": {...},
+    "gas_limit": 3000000
+  }
+}</code></pre>
+              </div>
+            </section>
+
+            <section id="user" class="mb-12">
+              <h2>User Management</h2>
+              
+              <div class="api-endpoint">
+                <span class="api-method get">GET</span>
+                <code>/users/{user_id}</code>
+                <p class="mt-2">Get user profile information</p>
+              </div>
+
+              <div class="api-endpoint">
+                <span class="api-method put">PUT</span>
+                <code>/users/{user_id}</code>
+                <p class="mt-2">Update user profile</p>
+                <pre><code>{
+  "name": "John Doe",
+  "preferences": {
+    "notification_enabled": true
+  }
+}</code></pre>
+              </div>
+            </section>
+
+            <section id="data" class="mb-12">
+              <h2>Data Services</h2>
+              
+              <div class="api-endpoint">
+                <span class="api-method post">POST</span>
+                <code>/data/ipfs/upload</code>
+                <p class="mt-2">Upload data to IPFS</p>
+                <pre><code>{
+  "data": "Base64 encoded data",
+  "metadata": {
+    "name": "example.json",
+    "type": "application/json"
+  }
+}</code></pre>
+              </div>
+
+              <div class="api-endpoint">
+                <span class="api-method get">GET</span>
+                <code>/data/ipfs/{cid}</code>
+                <p class="mt-2">Retrieve data from IPFS by CID</p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="/js/shared.js"></script>
+  </body>
+</html> 

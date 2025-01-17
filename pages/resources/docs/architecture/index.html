@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Architecture - AI Cryptopia Documentation</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logos/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <link href="/css/shared.css" rel="stylesheet" />
+    <style>
+      .doc-content h2 {
+        @apply text-2xl font-bold mb-4 text-sky-400;
+      }
+      .doc-content h3 {
+        @apply text-xl font-semibold mb-3 text-sky-300;
+      }
+      .doc-content p {
+        @apply text-gray-300 mb-4;
+      }
+      .doc-content ul {
+        @apply list-disc list-inside mb-4 text-gray-300;
+      }
+      .doc-content code {
+        @apply bg-slate-800 px-2 py-1 rounded text-sky-300;
+      }
+      .doc-content pre {
+        @apply bg-slate-800 p-4 rounded-lg mb-4 overflow-x-auto;
+      }
+      .architecture-diagram {
+        @apply bg-slate-800/50 p-6 rounded-lg mb-8 border border-slate-700;
+      }
+      .architecture-diagram img {
+        @apply max-w-full h-auto mx-auto;
+      }
+    </style>
+  </head>
+  <body class="p-0">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="p-0">
+      <!-- Documentation Hero Section -->
+      <section class="relative py-12 mb-8 overflow-hidden bg-slate-900">
+        <div class="absolute inset-0">
+          <!-- Circuit-like background pattern -->
+          <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-sky-900/50 to-slate-900">
+            <div class="absolute inset-0 opacity-30" style="background-image: url('data:image/svg+xml,%3Csvg width=\'80\' height=\'80\' viewBox=\'0 0 80 80\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%230EA5E9\' fill-opacity=\'0.15\'%3E%3Cpath d=\'M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 12V8zm0 4L52 0h2L40 16v-4zm0 4L56 0h2L40 20v-4zm0 4L60 0h2L40 24v-4zm0 4L64 0h2L40 28v-4zm0 4L68 0h2L40 32v-4zm0 4L72 0h2L40 36v-4zm0 4L76 0h2L40 40v-4zM12 0L0 12V0h12zm16 0L0 28V0h28zm12 0L0 40V0h40z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+            </div>
+          </div>
+          <!-- Animated glow effect -->
+          <div class="absolute inset-0 bg-gradient-to-t from-sky-500/10 via-transparent to-transparent animate-pulse" style="animation-duration: 3s;"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center space-x-2 text-gray-400 mb-4">
+            <a href="/pages/resources/documentation.html" class="hover:text-sky-400">Documentation</a>
+            <span>/</span>
+            <span class="text-sky-400">Architecture</span>
+          </div>
+          <h1 class="text-4xl font-bold title-gradient mb-4">System Architecture</h1>
+          <p class="text-xl text-gray-300">Understanding AI Cryptopia's technical foundation and design principles</p>
+        </div>
+      </section>
+
+      <!-- Documentation Content -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <!-- Sidebar Navigation -->
+          <div class="lg:col-span-1">
+            <div class="sticky top-8">
+              <nav class="space-y-1">
+                <a href="#overview" class="block px-3 py-2 text-sky-400 hover:bg-slate-800 rounded-lg">Overview</a>
+                <a href="#core-components" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">Core Components</a>
+                <a href="#ai-integration" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">AI Integration</a>
+                <a href="#blockchain" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">Blockchain Layer</a>
+                <a href="#security" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">Security Architecture</a>
+                <a href="#scalability" class="block px-3 py-2 text-gray-300 hover:text-sky-400 hover:bg-slate-800 rounded-lg">Scalability</a>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Main Content -->
+          <div class="lg:col-span-3 doc-content">
+            <section id="overview" class="mb-12">
+              <h2>System Overview</h2>
+              <p>
+                AI Cryptopia's architecture is built on a modular, scalable foundation that combines AI capabilities with blockchain technology. Our system follows a microservices architecture pattern, allowing for independent scaling and maintenance of different components.
+              </p>
+              <div class="architecture-diagram">
+                <h3 class="text-center mb-4">High-Level Architecture</h3>
+                <pre><code>┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│   Client Layer   │     │  Service Layer   │     │    Data Layer    │
+│                 │     │                 │     │                 │
+│  - Web Interface│     │  - AI Services   │     │  - Blockchain    │
+│  - Mobile Apps  │     │  - API Gateway   │     │  - IPFS Storage  │
+│  - API Clients  │     │  - Auth Service  │     │  - Databases     │
+└─────────────────┘     └─────────────────┘     └─────────────────┘</code></pre>
+              </div>
+            </section>
+
+            <section id="core-components" class="mb-12">
+              <h2>Core Components</h2>
+              <h3>1. Frontend Layer</h3>
+              <p>
+                Our frontend is built using modern web technologies:
+              </p>
+              <ul>
+                <li>HTML5 for structure</li>
+                <li>TailwindCSS for styling</li>
+                <li>JavaScript for interactivity</li>
+                <li>Web3.js for blockchain interactions</li>
+              </ul>
+
+              <h3>2. Service Layer</h3>
+              <p>
+                The service layer handles business logic and coordinates between different components:
+              </p>
+              <ul>
+                <li>RESTful APIs for data access</li>
+                <li>WebSocket connections for real-time updates</li>
+                <li>Authentication and authorization services</li>
+                <li>AI service orchestration</li>
+              </ul>
+
+              <h3>3. Data Layer</h3>
+              <p>
+                Our data infrastructure combines traditional and blockchain storage:
+              </p>
+              <ul>
+                <li>Smart contracts for on-chain data</li>
+                <li>IPFS for decentralized file storage</li>
+                <li>Distributed databases for scalable data management</li>
+              </ul>
+            </section>
+
+            <section id="ai-integration" class="mb-12">
+              <h2>AI Integration</h2>
+              <p>
+                AI Cryptopia integrates various AI models and services:
+              </p>
+              <ul>
+                <li>Natural Language Processing for content analysis</li>
+                <li>Machine Learning for predictive analytics</li>
+                <li>Neural Networks for pattern recognition</li>
+                <li>Federated Learning for privacy-preserving AI training</li>
+              </ul>
+              <p>
+                Our AI services are containerized and can be scaled independently based on demand.
+              </p>
+            </section>
+
+            <section id="blockchain" class="mb-12">
+              <h2>Blockchain Layer</h2>
+              <p>
+                The blockchain layer provides:
+              </p>
+              <ul>
+                <li>Smart contract management</li>
+                <li>Transaction processing</li>
+                <li>Decentralized identity management</li>
+                <li>Cross-chain interoperability</li>
+              </ul>
+              <p>
+                We utilize multiple blockchain networks to optimize for different use cases:
+              </p>
+              <pre><code>- Ethereum: Main network for smart contracts
+- Polygon: Scalable transactions
+- IPFS: Decentralized storage
+- Chainlink: Oracle services</code></pre>
+            </section>
+
+            <section id="security" class="mb-12">
+              <h2>Security Architecture</h2>
+              <p>
+                Security is implemented at multiple levels:
+              </p>
+              <ul>
+                <li>End-to-end encryption for sensitive data</li>
+                <li>Multi-signature wallet support</li>
+                <li>Regular security audits</li>
+                <li>Zero-knowledge proofs for privacy</li>
+              </ul>
+            </section>
+
+            <section id="scalability" class="mb-12">
+              <h2>Scalability</h2>
+              <p>
+                Our architecture is designed for horizontal scalability:
+              </p>
+              <ul>
+                <li>Microservices architecture for independent scaling</li>
+                <li>Load balancing across multiple regions</li>
+                <li>Caching layers for improved performance</li>
+                <li>Layer 2 solutions for blockchain scalability</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="/js/shared.js"></script>
+  </body>
+</html> 

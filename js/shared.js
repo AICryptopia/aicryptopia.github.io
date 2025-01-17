@@ -1,14 +1,10 @@
 // Function to load HTML content from a file
 async function loadComponent(url, containerId) {
   try {
-    // Add timestamp to prevent caching
-    const nocacheUrl = `${url}?v=${new Date().getTime()}`;
-    const response = await fetch(nocacheUrl, {
-      headers: {
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
-      }
-    });
+    // Use a version number for cache busting instead of timestamp
+    const version = '1.0'; // This should be updated when components change
+    const versionedUrl = `${url}?v=${version}`;
+    const response = await fetch(versionedUrl);
     const html = await response.text();
     const container = document.getElementById(containerId);
     
