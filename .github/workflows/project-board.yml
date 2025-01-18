@@ -1,0 +1,65 @@
+name: Project Board Automation
+
+on:
+  issues:
+    types: [opened, reopened, closed]
+  pull_request:
+    types: [opened, reopened, closed, converted_to_draft, ready_for_review]
+
+jobs:
+  project_automation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Move to Project Board
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/orgs/AICryptopia/projects/1
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Project Status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const updateIssueStatus = async () => {
+              // Status mapping based on event type and action
+              let newStatus;
+              if (context.eventName === 'issues') {
+                switch (context.payload.action) {
+                  case 'opened':
+                  case 'reopened':
+                    newStatus = '📋 Backlog';
+                    break;
+                  case 'closed':
+                    newStatus = '✅ Done';
+                    break;
+                }
+              } else if (context.eventName === 'pull_request') {
+                switch (context.payload.action) {
+                  case 'opened':
+                  case 'reopened':
+                    newStatus = '🚧 In Progress';
+                    break;
+                  case 'ready_for_review':
+                    newStatus = '👀 In Review';
+                    break;
+                  case 'closed':
+                    if (context.payload.pull_request.merged) {
+                      newStatus = '✅ Done';
+                    }
+                    break;
+                }
+              }
+              
+              if (newStatus) {
+                // Update the status using GitHub's REST API
+                const item = context.payload.issue || context.payload.pull_request;
+                await github.rest.issues.update({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: item.number,
+                  state: newStatus.includes('Done') ? 'closed' : 'open'
+                });
+              }
+            };
+            
+            await updateIssueStatus(); 
