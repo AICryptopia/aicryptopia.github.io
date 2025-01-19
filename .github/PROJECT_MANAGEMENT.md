@@ -94,6 +94,11 @@ Each view uses consistent status columns:
 3. Request review when ready
 4. Update status labels appropriately
 
+### Command Line Operations
+- Avoid using chained commands (&&) in workflows and scripts for better cross-platform compatibility
+- Use separate steps for sequential operations
+- Ensure commands are platform-agnostic when possible
+
 ## Project Management
 
 ### Completed Tasks ✅
