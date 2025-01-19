@@ -71,33 +71,35 @@
       <!-- Blog Hero Section -->
       <section class="relative py-32 mb-12 overflow-hidden">
         <!-- Background Image and Overlay -->
-        <img
-          src="/images/hero/blog-hero.png"
-          alt="Blog Hero Background"
-          class="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/95 via-slate-900/90 to-slate-900/95"></div>
-        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="absolute inset-0">
+          <img 
+            src="/images/hero/blog-hero.png" 
+            alt="AI & Web3 Blog"
+            class="w-full h-full object-cover"
+          />
+          <!-- Overlay Gradient -->
+          <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900/90"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(circle at center, rgba(56,189,248,0.1) 0%, transparent 70%)"></div>
+        </div>
 
         <!-- Hero Content -->
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 class="text-4xl sm:text-5xl font-bold title-gradient mb-12" style="line-height: 1.6; padding: 0.5em 0;">Stay Current on The Frontier</h1>
+          <h1 class="text-4xl sm:text-5xl font-bold title-gradient mb-6">Insights & Updates</h1>
           <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Insights, updates, and deep dives into AI and Web3 technology
+            Exploring the intersection of artificial intelligence and blockchain technology
           </p>
           <!-- Blog Stats -->
-          <div class="flex flex-wrap justify-center gap-6 animate-fade-in mb-8">
+          <div class="flex flex-wrap justify-center gap-6 animate-fade-in">
             <div class="flex items-center">
-              <span class="text-sky-400 mr-2">📚</span>
-              <span class="text-gray-300">4 Articles</span>
+              <span class="text-sky-400 mr-2">📝</span>
+              <span class="text-gray-300">10+ Articles</span>
             </div>
             <div class="flex items-center">
               <span class="text-sky-400 mr-2">🏷️</span>
-              <span class="text-gray-300">8 Categories</span>
+              <span class="text-gray-300">5 Categories</span>
             </div>
             <div class="flex items-center">
-              <span class="text-sky-400 mr-2">📅</span>
+              <span class="text-sky-400 mr-2">📚</span>
               <span class="text-gray-300">Weekly Updates</span>
             </div>
           </div>
@@ -265,5 +267,31 @@
 
     <!-- Load shared JavaScript -->
     <script src="/js/shared.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Load header components sequentially
+        try {
+            console.log('Loading main header...');
+            await loadComponent('/components/layout/Header/index.html', 'header-container');
+            console.log('Main header loaded');
+
+            console.log('Loading navigation...');
+            await loadComponent('/components/layout/Header/Navigation/index.html', 'nav-container');
+            console.log('Navigation loaded');
+
+            console.log('Loading mobile menu...');
+            await loadComponent('/components/layout/Header/MobileMenu/index.html', 'mobile-menu-container');
+            console.log('Mobile menu loaded');
+            initializeMobileMenu();
+            console.log('Mobile menu initialized');
+        } catch (error) {
+            console.error('Error loading header components:', error);
+        }
+
+        // Load footer
+        loadComponent('/components/layout/Footer/index.html', 'footer-container');
+    });
+    </script>
   </body>
 </html> 

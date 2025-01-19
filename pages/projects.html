@@ -282,5 +282,31 @@
 
     <!-- Load shared JavaScript -->
     <script src="/js/shared.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Load header components sequentially
+        try {
+            console.log('Loading main header...');
+            await loadComponent('/components/layout/Header/index.html', 'header-container');
+            console.log('Main header loaded');
+
+            console.log('Loading navigation...');
+            await loadComponent('/components/layout/Header/Navigation/index.html', 'nav-container');
+            console.log('Navigation loaded');
+
+            console.log('Loading mobile menu...');
+            await loadComponent('/components/layout/Header/MobileMenu/index.html', 'mobile-menu-container');
+            console.log('Mobile menu loaded');
+            initializeMobileMenu();
+            console.log('Mobile menu initialized');
+        } catch (error) {
+            console.error('Error loading header components:', error);
+        }
+
+        // Load footer
+        loadComponent('/components/layout/Footer/index.html', 'footer-container');
+    });
+    </script>
   </body>
 </html> 
