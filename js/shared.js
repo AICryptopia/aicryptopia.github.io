@@ -1,13 +1,15 @@
 // Function to load HTML content from a file
 async function loadComponent(url, containerId) {
   try {
-    // Use a version number for cache busting instead of timestamp
-    const version = '1.0'; // This should be updated when components change
-    const versionedUrl = `${url}?v=${version}`;
-    const response = await fetch(versionedUrl);
+    const response = await fetch(url);
     const html = await response.text();
     const container = document.getElementById(containerId);
     
+    if (!container) {
+      console.error(`Container ${containerId} not found`);
+      return;
+    }
+
     // Special handling for footer to prevent inheriting document behavior
     if (containerId === 'footer-container') {
       container.outerHTML = html;  // Replace the entire container
@@ -38,6 +40,6 @@ function initializeMobileMenu() {
 
 // Load header and footer when the page loads
 document.addEventListener('DOMContentLoaded', () => {
-  loadComponent('/components/header.html', 'header-container');
-  loadComponent('/components/footer.html', 'footer-container');
+  loadComponent('/components/layout/Header/index.html', 'header-container');
+  loadComponent('/components/layout/Footer/index.html', 'footer-container');
 }); 

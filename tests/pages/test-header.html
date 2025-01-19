@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Component Test</title>
+    <link rel="stylesheet" href="/css/shared.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'slate': {
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-white min-h-screen">
+    <!-- Test the new header component -->
+    <div id="header-container"></div>
+
+    <!-- Test content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 class="text-3xl font-bold">Header Component Test Page</h1>
+        <p class="mt-4">This page tests the new header component structure.</p>
+    </main>
+
+    <!-- Include shared.js first -->
+    <script src="/js/shared.js"></script>
+    <script>
+        console.log('Test page loaded, attempting to load components...');
+        
+        // Function to load all header components
+        async function loadHeaderComponents() {
+            try {
+                // Load main header first
+                console.log('Loading main header...');
+                await loadComponent('/components/layout/Header/index.html', 'header-container');
+                console.log('Main header loaded');
+
+                // Load navigation
+                console.log('Loading navigation...');
+                await loadComponent('/components/layout/Header/Navigation/index.html', 'nav-container');
+                console.log('Navigation loaded');
+
+                // Load mobile menu and initialize it
+                console.log('Loading mobile menu...');
+                await loadComponent('/components/layout/Header/MobileMenu/index.html', 'mobile-menu-container');
+                console.log('Mobile menu loaded');
+                initializeMobileMenu();
+                console.log('Mobile menu initialized');
+            } catch (error) {
+                console.error('Error loading header components:', error);
+            }
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadHeaderComponents);
+    </script>
+</body>
+</html> 
