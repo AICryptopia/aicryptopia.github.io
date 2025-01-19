@@ -5,6 +5,8 @@ on:
     types: [opened, reopened, closed]
   pull_request:
     types: [opened, reopened, closed, converted_to_draft, ready_for_review]
+  pull_request_target:
+    types: [opened, reopened, closed]
 
 jobs:
   project_automation:
@@ -14,54 +16,159 @@ jobs:
         uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/users/AICryptopia/projects/1
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
 
-      - name: Update Project Status and Labels
+      - name: Update Project Status
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
           script: |
-            const updateIssueStatus = async () => {
-              // Status mapping based on event type and action
-              let newStatus;
+            const getNewStatus = () => {
               if (context.eventName === 'issues') {
                 switch (context.payload.action) {
                   case 'opened':
+                    return 'Backlog';
                   case 'reopened':
-                    newStatus = '📋 Backlog';
-                    break;
+                    return 'In Progress';
                   case 'closed':
-                    newStatus = '✅ Done';
-                    break;
+                    return 'Done';
                 }
-              } else if (context.eventName === 'pull_request') {
+              } else if (context.eventName === 'pull_request' || context.eventName === 'pull_request_target') {
                 switch (context.payload.action) {
                   case 'opened':
-                  case 'reopened':
-                    newStatus = '🚧 In Progress';
-                    break;
+                    return 'In Progress';
                   case 'ready_for_review':
-                    newStatus = '👀 In Review';
-                    break;
+                    return 'In Review';
+                  case 'converted_to_draft':
+                    return 'In Progress';
                   case 'closed':
-                    if (context.payload.pull_request.merged) {
-                      newStatus = '✅ Done';
-                    }
-                    break;
+                    return context.payload.pull_request.merged ? 'Done' : 'Backlog';
                 }
               }
-              
-              if (newStatus) {
-                // Update the status using GitHub's REST API
+              return null;
+            };
+
+            const updateProjectStatus = async () => {
+              try {
+                const newStatus = getNewStatus();
+                if (!newStatus) return;
+
                 const item = context.payload.issue || context.payload.pull_request;
-                await github.rest.issues.update({
+                
+                // Get linked issues if this is a PR
+                let linkedIssues = [];
+                if (context.eventName === 'pull_request' || context.eventName === 'pull_request_target') {
+                  const body = item.body || '';
+                  const matches = body.match(/(close[sd]?|fix(e[sd])?|resolve[sd]?)\s*:?\s*#(\d+)/gi) || [];
+                  linkedIssues = matches.map(match => parseInt(match.match(/\d+/)[0]));
+                  
+                  // Also check PR title for linked issues
+                  const titleMatches = item.title.match(/(close[sd]?|fix(e[sd])?|resolve[sd]?)\s*:?\s*#(\d+)/gi) || [];
+                  linkedIssues.push(...titleMatches.map(match => parseInt(match.match(/\d+/)[0])));
+                  
+                  // Check for "Relates to #X" format
+                  const relatesMatches = body.match(/relates\s+to\s*:?\s*#(\d+)/gi) || [];
+                  linkedIssues.push(...relatesMatches.map(match => parseInt(match.match(/\d+/)[0])));
+                }
+
+                // Function to update a single item's status
+                const updateItemStatus = async (itemId, projectId) => {
+                  const mutation = `mutation($projectId: ID!, $itemId: ID!, $value: String!) {
+                    updateProjectV2ItemFieldValue(input: {
+                      projectId: $projectId
+                      itemId: $itemId
+                      fieldId: "Status"
+                      value: { text: $value }
+                    }) {
+                      projectV2Item {
+                        id
+                      }
+                    }
+                  }`;
+
+                  await github.graphql(mutation, {
+                    projectId: projectId,
+                    itemId: itemId,
+                    value: newStatus
+                  });
+                };
+
+                // Get project info for the current item
+                const query = `query($owner: String!, $name: String!, $number: Int!) {
+                  repository(owner: $owner, name: $name) {
+                    ${context.eventName === 'issues' ? 'issue' : 'pullRequest'}(number: $number) {
+                      projectItems(first: 1) {
+                        nodes {
+                          id
+                          project {
+                            id
+                          }
+                        }
+                      }
+                    }
+                  }
+                }`;
+
+                const result = await github.graphql(query, {
                   owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  issue_number: item.number,
-                  state: newStatus.includes('Done') ? 'closed' : 'open'
+                  name: context.repo.repo,
+                  number: item.number
                 });
+
+                const projectItem = result.repository[context.eventName === 'issues' ? 'issue' : 'pullRequest']
+                  .projectItems.nodes[0];
+
+                if (projectItem) {
+                  await updateItemStatus(projectItem.id, projectItem.project.id);
+                  console.log(`Updated status for ${context.eventName} #${item.number} to ${newStatus}`);
+                }
+
+                // Update linked issues if PR is merged or closed
+                if (linkedIssues.length > 0 && context.payload.action === 'closed') {
+                  for (const issueNumber of linkedIssues) {
+                    try {
+                      const linkedQuery = `query($owner: String!, $name: String!, $number: Int!) {
+                        repository(owner: $owner, name: $name) {
+                          issue(number: $number) {
+                            projectItems(first: 1) {
+                              nodes {
+                                id
+                                project {
+                                  id
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }`;
+
+                      const linkedResult = await github.graphql(linkedQuery, {
+                        owner: context.repo.owner,
+                        name: context.repo.repo,
+                        number: issueNumber
+                      });
+
+                      const linkedProjectItem = linkedResult.repository.issue.projectItems.nodes[0];
+                      if (linkedProjectItem) {
+                        await updateItemStatus(linkedProjectItem.id, linkedProjectItem.project.id);
+                        console.log(`Updated status for linked issue #${issueNumber} to ${newStatus}`);
+                      }
+                    } catch (error) {
+                      console.error(`Error updating linked issue #${issueNumber}:`, error);
+                    }
+                  }
+                }
+              } catch (error) {
+                console.error('Error updating project status:', error);
               }
             };
 
+            await updateProjectStatus();
+
+      - name: Add Labels
+        uses: actions/github-script@v7
+        with:
+          script: |
             const addLabels = async () => {
               if (context.eventName === 'issues' && context.payload.action === 'opened') {
                 const issue = context.payload.issue;
@@ -69,7 +176,6 @@ jobs:
                 const body = issue.body ? issue.body.toLowerCase() : '';
                 const labels = [];
 
-                // Type Labels based on title prefix
                 if (title.startsWith('[feature]')) {
                   labels.push('✨ Type: Feature');
                 } else if (title.startsWith('[bug]')) {
@@ -80,16 +186,14 @@ jobs:
                   labels.push('🔧 Type: Maintenance');
                 }
 
-                // Priority Labels based on title or body
                 if (title.includes('[high]') || body.includes('priority: high')) {
                   labels.push('🔥 Priority: High');
                 } else if (title.includes('[medium]') || body.includes('priority: medium')) {
                   labels.push('⏰ Priority: Medium');
                 } else {
-                  labels.push('📅 Priority: Low'); // Default priority
+                  labels.push('📅 Priority: Low');
                 }
 
-                // Add BUILD label by default
                 labels.push('BUILD');
 
                 if (labels.length > 0) {
@@ -103,5 +207,4 @@ jobs:
               }
             };
             
-            await updateIssueStatus();
             await addLabels(); 
