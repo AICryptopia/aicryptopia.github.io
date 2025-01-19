@@ -8,6 +8,12 @@ on:
   pull_request_target:
     types: [opened, reopened, closed]
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  repository-projects: write
+
 jobs:
   project_automation:
     runs-on: ubuntu-latest
