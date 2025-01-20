@@ -161,6 +161,26 @@ Each view uses consistent status columns:
    - Track progress in project board
    - Regular status reviews
 
+### Project Automation
+1. **Project URL Verification**
+   - Before updating project automation workflows, verify project URL:
+   ```bash
+   # Get necessary permissions
+   gh auth refresh -s read:project
+   
+   # List all organization projects
+   gh project list --owner AICryptopia
+   ```
+   - Current project URL: https://github.com/orgs/AICryptopia/projects/1
+
+2. **Workflow Configuration**
+   - Use exact project URL in workflows
+   - Required permissions:
+     - `contents: read`
+     - `issues: write`
+     - `pull-requests: write`
+     - `repository-projects: write`
+
 ### Notes
 - This is a living document, updated as processes evolve
 - Focus on maintaining clear communication

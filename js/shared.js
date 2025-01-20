@@ -17,7 +17,7 @@ async function loadComponent(url, containerId) {
       container.innerHTML = html;
     }
 
-    // If this is the header, initialize the mobile menu functionality
+    // Initialize mobile menu after header is loaded
     if (containerId === 'header-container') {
       initializeMobileMenu();
     }
@@ -31,11 +31,33 @@ function initializeMobileMenu() {
   const mobileMenuButton = document.querySelector('.mobile-menu-button');
   const mobileMenu = document.querySelector('.mobile-menu');
 
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+  if (!mobileMenuButton || !mobileMenu) {
+    console.error('Mobile menu elements not found');
+    return;
   }
+
+  // Remove any existing event listeners
+  mobileMenuButton.replaceWith(mobileMenuButton.cloneNode(true));
+  const newMobileMenuButton = document.querySelector('.mobile-menu-button');
+
+  // Add click event listener
+  newMobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (event) => {
+    if (!mobileMenu.contains(event.target) && !newMobileMenuButton.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  // Close menu when window is resized to desktop view
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
 }
 
 // Load header and footer when the page loads
