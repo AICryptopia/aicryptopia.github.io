@@ -186,3 +186,5 @@ Each view uses consistent status columns:
 - Focus on maintaining clear communication
 - Regular review of project management effectiveness
 - Adjust processes based on team feedback
+
+## Contributing
