@@ -9,7 +9,6 @@ on:
 permissions:
   contents: read
   pull-requests: write
-  repository-projects: write
   issues: write
 
 jobs:
@@ -23,13 +22,6 @@ jobs:
           script: |
             const processItem = async () => {
               try {
-                // Add to project board first
-                await github.rest.projects.createCard({
-                  column_id: process.env.PROJECT_COLUMN_ID,
-                  content_id: context.payload.pull_request?.id || context.payload.issue.id,
-                  content_type: context.eventName === 'pull_request' ? 'PullRequest' : 'Issue'
-                });
-
                 if (context.eventName === 'pull_request') {
                   const pr = context.payload.pull_request;
                   const body = pr.body || '';
@@ -97,9 +89,9 @@ jobs:
                   }
                   
                   // Process related issues
-                  const issueMatch = body.match(/Closes #(\d+)/);
-                  if (issueMatch) {
-                    const issueNumber = issueMatch[1];
+                  const issueMatches = body.match(/Part of #(\d+)/g) || [];
+                  for (const match of issueMatches) {
+                    const issueNumber = match.match(/\d+/)[0];
                     
                     // Update issue status and labels
                     const { data: issueLabels } = await github.rest.issues.listLabelsOnIssue({
