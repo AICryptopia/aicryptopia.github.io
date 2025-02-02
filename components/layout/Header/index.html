@@ -1,5 +1,16 @@
 <!-- Navigation Header -->
 <header class="header-bg sticky top-0 z-50">
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/images/logos/ai-crypto-logo.png" as="image">
+  <link rel="preload" href="/css/shared.css" as="style">
+  <link rel="preload" href="/js/shared.js" as="script">
+  
+  <!-- Resource hints for external domains -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://github.com">
+  <link rel="dns-prefetch" href="https://github.com">
+  
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo and Brand -->

@@ -1,0 +1,154 @@
+name: Project Automation
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened, edited, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  project_automation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Process Issue or PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const processItem = async () => {
+              try {
+                if (context.eventName === 'pull_request') {
+                  const pr = context.payload.pull_request;
+                  const body = pr.body || '';
+                  
+                  // Extract strategic pillars based on template checkboxes
+                  const pillars = new Set(); // Using Set to avoid duplicates
+                  
+                  // BUILD pillar checks
+                  if (body.includes('[x] Technical Development (smart contracts, ML models, etc.)') ||
+                      body.includes('[x] Documentation & Testing') ||
+                      body.includes('[x] Code Reviews & Quality') ||
+                      body.includes('[x] Technical Infrastructure')) {
+                    pillars.add('BUILD');
+                  }
+                  
+                  // MOTIVATE pillar checks
+                  if (body.includes('[x] Community Engagement') ||
+                      body.includes('[x] Knowledge Sharing') ||
+                      body.includes('[x] Mentorship Programs') ||
+                      body.includes('[x] Educational Content')) {
+                    pillars.add('MOTIVATE');
+                  }
+                  
+                  // PROMOTE pillar checks
+                  if (body.includes('[x] Content Creation') ||
+                      body.includes('[x] Community Outreach') ||
+                      body.includes('[x] Project Advocacy') ||
+                      body.includes('[x] Success Stories')) {
+                    pillars.add('PROMOTE');
+                  }
+
+                  // Get PR type from title
+                  const title = pr.title.toLowerCase();
+                  const typeLabels = [];
+                  if (title.startsWith('feat:')) typeLabels.push('✨ Type: Feature');
+                  else if (title.startsWith('fix:')) typeLabels.push('🐛 Type: Bug');
+                  else if (title.startsWith('docs:')) typeLabels.push('📚 Type: Documentation');
+                  else if (title.startsWith('chore:') || title.startsWith('refactor:')) {
+                    typeLabels.push('🔧 Type: Maintenance');
+                  }
+
+                  // Combine all labels
+                  const newLabels = [...pillars, ...typeLabels, '👀 Status: Review Needed'];
+                  
+                  // Get existing labels
+                  const { data: existingLabels } = await github.rest.issues.listLabelsOnIssue({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: pr.number
+                  });
+                  
+                  // Filter out labels that already exist
+                  const labelsToAdd = newLabels.filter(label => 
+                    !existingLabels.some(existing => existing.name === label)
+                  );
+                  
+                  // Add new labels if any
+                  if (labelsToAdd.length > 0) {
+                    await github.rest.issues.addLabels({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: pr.number,
+                      labels: labelsToAdd
+                    });
+                  }
+                  
+                  // Process related issues
+                  const issueMatches = body.match(/Part of #(\d+)/g) || [];
+                  for (const match of issueMatches) {
+                    const issueNumber = match.match(/\d+/)[0];
+                    
+                    // Update issue status and labels
+                    const { data: issueLabels } = await github.rest.issues.listLabelsOnIssue({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber
+                    });
+                    
+                    const currentLabels = issueLabels.map(label => label.name)
+                      .filter(name => !name.startsWith('📋 Status:') && !name.startsWith('🔄 Status:'));
+                    currentLabels.push('👀 Status: Review Needed');
+                    
+                    await github.rest.issues.setLabels({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber,
+                      labels: currentLabels
+                    });
+                    
+                    // Add PR link comment if it doesn't exist
+                    const { data: comments } = await github.rest.issues.listComments({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issueNumber
+                    });
+                    
+                    if (!comments.some(comment => comment.body.includes(`Pull Request #${pr.number}`))) {
+                      await github.rest.issues.createComment({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: issueNumber,
+                        body: `📝 Pull Request #${pr.number} opened to address this issue.`
+                      });
+                    }
+                  }
+                } else {
+                  // Handle new issues
+                  const issue = context.payload.issue;
+                  const title = issue.title.toLowerCase();
+                  const labels = ['📋 Status: Backlog'];
+                  
+                  // Determine type label
+                  if (title.startsWith('[feature]')) labels.push('✨ Type: Feature');
+                  else if (title.startsWith('[bug]')) labels.push('🐛 Type: Bug');
+                  else if (title.startsWith('[docs]')) labels.push('📚 Type: Documentation');
+                  else if (title.startsWith('[maintenance]')) labels.push('🔧 Type: Maintenance');
+                  
+                  await github.rest.issues.addLabels({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: issue.number,
+                    labels: labels
+                  });
+                }
+              } catch (error) {
+                core.setFailed(`Action failed with error: ${error}`);
+              }
+            };
+            
+            await processItem(); 

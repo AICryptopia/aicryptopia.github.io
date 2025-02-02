@@ -14,6 +14,8 @@
     <link rel="manifest" href="/site.webmanifest" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link href="/css/shared.css" rel="stylesheet" />
+    <!-- Load shared.js as a module -->
+    <script type="module" src="/js/shared.js"></script>
     <style>
       .doc-card {
         background: rgba(30, 41, 59, 0.8);
@@ -97,12 +99,7 @@
             <p class="text-gray-300 mb-4">
               Quick start guides and basic concepts to help you begin your journey with AI Cryptopia.
             </p>
-            <a href="/pages/resources/docs/getting-started" class="text-sky-400 hover:text-sky-300 inline-flex items-center learn-more-link">
-              Learn More
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <custom-button href="/pages/resources/docs/getting-started" variant="secondary" size="sm" icon='<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'>Learn More</custom-button>
           </div>
 
           <!-- API Reference Card -->
@@ -117,12 +114,7 @@
             <p class="text-gray-300 mb-4">
               Comprehensive API documentation for developers integrating with AI Cryptopia services.
             </p>
-            <a href="/pages/resources/docs/api-reference" class="text-sky-400 hover:text-sky-300 inline-flex items-center learn-more-link">
-              Learn More
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <custom-button href="/pages/resources/docs/api-reference" variant="secondary" size="sm" icon='<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'>Learn More</custom-button>
           </div>
 
           <!-- Tutorials Card -->
@@ -137,12 +129,7 @@
             <p class="text-gray-300 mb-4">
               Step-by-step guides and tutorials to help you build with AI Cryptopia technologies.
             </p>
-            <a href="/pages/resources/docs/tutorials" class="text-sky-400 hover:text-sky-300 inline-flex items-center learn-more-link">
-              Learn More
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <custom-button href="/pages/resources/docs/tutorials" variant="secondary" size="sm" icon='<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'>Learn More</custom-button>
           </div>
 
           <!-- Contributing Card -->
@@ -157,12 +144,7 @@
             <p class="text-gray-300 mb-4">
               Guidelines and best practices for contributing to AI Cryptopia's open-source projects.
             </p>
-            <a href="/pages/resources/docs/contributing" class="text-sky-400 hover:text-sky-300 inline-flex items-center learn-more-link">
-              Learn More
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <custom-button href="/pages/resources/docs/contributing" variant="secondary" size="sm" icon='<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'>Learn More</custom-button>
           </div>
 
           <!-- Architecture Card -->
@@ -177,12 +159,7 @@
             <p class="text-gray-300 mb-4">
               Detailed overview of AI Cryptopia's system architecture and technical design decisions.
             </p>
-            <a href="/pages/resources/docs/architecture" class="text-sky-400 hover:text-sky-300 inline-flex items-center learn-more-link">
-              Learn More
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <custom-button href="/pages/resources/docs/architecture" variant="secondary" size="sm" icon='<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'>Learn More</custom-button>
           </div>
 
           <!-- Security Card -->
@@ -197,12 +174,7 @@
             <p class="text-gray-300 mb-4">
               Security guidelines, best practices, and audit reports for AI Cryptopia's infrastructure.
             </p>
-            <a href="/pages/resources/docs/security" class="text-sky-400 hover:text-sky-300 inline-flex items-center learn-more-link">
-              Learn More
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+            <custom-button href="/pages/resources/docs/security" variant="secondary" size="sm" icon='<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'>Learn More</custom-button>
           </div>
         </div>
       </div>
@@ -216,7 +188,31 @@
     <!-- Footer Container -->
     <div id="footer-container"></div>
 
-    <!-- Load shared JavaScript -->
-    <script src="/js/shared.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async function() {
+        try {
+          // Load header components sequentially
+          console.log('Loading main header...');
+          await loadComponent('/components/layout/Header/index.html', 'header-container');
+          console.log('Main header loaded');
+
+          console.log('Loading navigation...');
+          await loadComponent('/components/layout/Header/Navigation/index.html', 'nav-container');
+          console.log('Navigation loaded');
+
+          console.log('Loading mobile menu...');
+          await loadComponent('/components/layout/Header/MobileMenu/index.html', 'mobile-menu-container');
+          console.log('Mobile menu loaded');
+          initializeMobileMenu();
+          console.log('Mobile menu initialized');
+
+          // Load footer
+          await loadComponent('/components/layout/Footer/index.html', 'footer-container');
+          console.log('Footer loaded');
+        } catch (error) {
+          console.error('Error loading components:', error);
+        }
+      });
+    </script>
   </body>
 </html> 
