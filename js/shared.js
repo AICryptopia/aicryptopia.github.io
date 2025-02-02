@@ -1,3 +1,19 @@
+// Import Button component
+import '/components/common/Button/button.js';
+
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/js/service-worker.js')
+      .then(registration => {
+        console.log('ServiceWorker registration successful');
+      })
+      .catch(err => {
+        console.error('ServiceWorker registration failed:', err);
+      });
+  });
+}
+
 // Function to load HTML content from a file
 async function loadComponent(url, containerId) {
   try {

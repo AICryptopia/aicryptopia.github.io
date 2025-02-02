@@ -224,4 +224,36 @@ body {
     background: rgba(30, 41, 59, 0.98);
     backdrop-filter: blur(8px);
   }
+}
+
+/* Performance optimizations */
+* {
+  /* Optimize animations */
+  will-change: transform, opacity;
+  /* Optimize repaints */
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reduce animation complexity on mobile */
+@media (max-width: 768px) {
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-rotate-float,
+  .animate-breathing,
+  .animate-breathing-glow,
+  .animate-wave {
+    animation: none;
+  }
+  
+  .glass {
+    backdrop-filter: none;
+    background: rgba(30, 41, 59, 0.95);
+  }
+}
+
+/* Use passive listeners for touch events */
+.mobile-menu,
+.dropdown-content {
+  touch-action: pan-y pinch-zoom;
 } 

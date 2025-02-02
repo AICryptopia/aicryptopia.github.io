@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Component Examples</title>
+    <!-- Load Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+    <!-- Add our shared styles -->
+    <link href="/css/shared.css" rel="stylesheet" />
+    <style>
+        /* Ensure dark background */
+        body {
+            background-color: rgb(15, 23, 42);
+            color: white;
+        }
+    </style>
+    <!-- Load button component -->
+    <script src="button.js" type="module"></script>
+</head>
+<body class="p-8">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <h1 class="text-3xl font-bold mb-8">Button Component Examples</h1>
+
+        <!-- Primary Buttons -->
+        <section class="space-y-4">
+            <h2 class="text-xl">Primary Buttons</h2>
+            <div class="flex gap-4 items-center">
+                <custom-button size="sm">Small Button</custom-button>
+                <custom-button>Medium Button</custom-button>
+                <custom-button size="lg">Large Button</custom-button>
+            </div>
+        </section>
+
+        <!-- Secondary Buttons -->
+        <section class="space-y-4">
+            <h2 class="text-xl">Secondary Buttons</h2>
+            <div class="flex gap-4 items-center">
+                <custom-button variant="secondary" size="sm">Small Secondary</custom-button>
+                <custom-button variant="secondary">Medium Secondary</custom-button>
+                <custom-button variant="secondary" size="lg">Large Secondary</custom-button>
+            </div>
+        </section>
+
+        <!-- Buttons with Icons -->
+        <section class="space-y-4">
+            <h2 class="text-xl">Buttons with Icons</h2>
+            <div class="flex gap-4 items-center">
+                <custom-button icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" /></svg>'>
+                    Add Item
+                </custom-button>
+                <custom-button variant="secondary" icon='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M3.75 3A1.75 1.75 0 002 4.75v3.26a3.235 3.235 0 011.75-.51h12.5c.644 0 1.245.188 1.75.51V4.75A1.75 1.75 0 0016.25 3H3.75zM2 9.5c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v5.75A1.75 1.75 0 0116.25 17H3.75A1.75 1.75 0 012 15.25V9.5zm4.75 1a.75.75 0 00-.75.75v2.5c0 .414.336.75.75.75h6.5a.75.75 0 00.75-.75v-2.5a.75.75 0 00-.75-.75h-6.5z" /></svg>'>
+                    Archive
+                </custom-button>
+            </div>
+        </section>
+
+        <!-- Disabled Buttons -->
+        <section class="space-y-4">
+            <h2 class="text-xl">Disabled Buttons</h2>
+            <div class="flex gap-4 items-center">
+                <custom-button disabled>Disabled Primary</custom-button>
+                <custom-button variant="secondary" disabled>Disabled Secondary</custom-button>
+            </div>
+        </section>
+
+        <!-- Link Buttons -->
+        <section class="space-y-4">
+            <h2 class="text-xl">Link Buttons</h2>
+            <div class="flex gap-4 items-center">
+                <custom-button href="https://github.com/aicryptopia">GitHub Link</custom-button>
+                <custom-button variant="secondary" href="/pages/projects.html">Projects Link</custom-button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Add debug output -->
+    <div id="debug" class="mt-8 p-4 border border-gray-700 rounded">
+        <h3 class="text-lg font-bold mb-2">Debug Info:</h3>
+        <pre id="debug-output" class="text-sm"></pre>
+    </div>
+
+    <script>
+        // Add debug info
+        document.addEventListener('DOMContentLoaded', () => {
+            const debugOutput = document.getElementById('debug-output');
+            debugOutput.textContent = `
+Component Registered: ${!!customElements.get('custom-button')}
+Buttons Found: ${document.querySelectorAll('custom-button').length}
+Template Loaded: ${!!document.querySelector('template')}
+            `;
+
+            // Add error handling
+            window.addEventListener('error', (event) => {
+                debugOutput.textContent += `\nError: ${event.message}`;
+            });
+        });
+    </script>
+</body>
+</html> 
