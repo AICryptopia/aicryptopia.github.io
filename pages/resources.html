@@ -9,6 +9,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-touch-icon.png" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
     <link href="/css/shared.css" rel="stylesheet" />
+    <!-- Load shared.js as a module -->
+    <script type="module" src="/js/shared.js"></script>
     <style>
       .resource-card {
         background: rgba(30, 41, 59, 0.8);
@@ -40,7 +42,7 @@
       <!-- Resources Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Documentation -->
-        <a href="/pages/resources/documentation.html" class="resource-card rounded-xl p-8">
+        <div class="resource-card rounded-xl p-8">
           <div class="flex items-center mb-6">
             <div class="text-sky-400 mr-4">
               <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,21 +61,13 @@
               </p>
             </div>
           </div>
-          <div class="flex items-center text-sky-400">
-            <span>View Documentation</span>
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </div>
-        </a>
+          <custom-button variant="secondary" href="/pages/resources/documentation.html" icon='<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'>
+            View Documentation
+          </custom-button>
+        </div>
 
         <!-- GitHub Repositories -->
-        <a href="/pages/resources/repositories.html" class="resource-card rounded-xl p-8">
+        <div class="resource-card rounded-xl p-8">
           <div class="flex items-center mb-6">
             <div class="text-sky-400 mr-4">
               <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,18 +86,10 @@
               </p>
             </div>
           </div>
-          <div class="flex items-center text-sky-400">
-            <span>View Repositories</span>
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </div>
-        </a>
+          <custom-button variant="secondary" href="/pages/resources/repositories.html" icon='<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>'>
+            View Repositories
+          </custom-button>
+        </div>
 
         <!-- Getting Started -->
         <div class="resource-card rounded-xl p-8">
@@ -125,9 +111,9 @@
               </p>
             </div>
           </div>
-          <div class="flex items-center text-sky-400">
-            <span>Coming Soon</span>
-          </div>
+          <custom-button variant="secondary" disabled>
+            Coming Soon
+          </custom-button>
         </div>
 
         <!-- Community -->
@@ -150,9 +136,9 @@
               </p>
             </div>
           </div>
-          <div class="flex items-center text-sky-400">
-            <span>Coming Soon</span>
-          </div>
+          <custom-button variant="secondary" disabled>
+            Coming Soon
+          </custom-button>
         </div>
       </div>
     </main>
@@ -160,7 +146,30 @@
     <!-- Footer Container -->
     <div id="footer-container"></div>
 
-    <!-- Load shared JavaScript -->
-    <script src="/js/shared.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Load header components sequentially
+        try {
+            console.log('Loading main header...');
+            await loadComponent('/components/layout/Header/index.html', 'header-container');
+            console.log('Main header loaded');
+
+            console.log('Loading navigation...');
+            await loadComponent('/components/layout/Header/Navigation/index.html', 'nav-container');
+            console.log('Navigation loaded');
+
+            console.log('Loading mobile menu...');
+            await loadComponent('/components/layout/Header/MobileMenu/index.html', 'mobile-menu-container');
+            console.log('Mobile menu loaded');
+            initializeMobileMenu();
+            console.log('Mobile menu initialized');
+        } catch (error) {
+            console.error('Error loading header components:', error);
+        }
+
+        // Load footer
+        loadComponent('/components/layout/Footer/index.html', 'footer-container');
+    });
+    </script>
   </body>
 </html> 

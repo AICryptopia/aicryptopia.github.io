@@ -1,0 +1,89 @@
+<!-- Navigation Header -->
+<header class="header-bg sticky top-0 z-50">
+  <!-- Preload critical resources -->
+  <link rel="preload" href="/images/logos/ai-crypto-logo.png" as="image">
+  <link rel="preload" href="/css/shared.css" as="style">
+  <link rel="preload" href="/js/shared.js" as="script">
+  
+  <!-- Resource hints for external domains -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://github.com">
+  <link rel="dns-prefetch" href="https://github.com">
+  
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo and Brand -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center space-x-3 group">
+          <img src="/images/logos/ai-crypto-logo.png" alt="AI Cryptopia Logo" 
+               class="h-10 w-10 transition-all duration-300 ease-in-out 
+                      filter brightness-110 group-hover:brightness-125 
+                      group-hover:scale-110 logo-glow">
+          <span class="title-gradient font-bold text-xl">AI Cryptopia</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex md:items-center md:space-x-8 ml-8">
+        <a href="/pages/blog.html" class="text-gray-300 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
+          Blog
+        </a>
+        <a href="/pages/projects.html" class="text-gray-300 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
+          Projects
+        </a>
+        <!-- Resources Dropdown -->
+        <div class="dropdown relative group">
+          <div class="flex items-center">
+            <a href="/pages/resources.html" class="text-gray-300 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors">
+              Resources
+            </a>
+            <button class="text-gray-300 hover:text-sky-400 p-1 text-sm transition-colors">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
+          <div class="dropdown-content mt-2">
+            <a href="/pages/resources/documentation.html" class="block px-4 py-3 text-sm text-gray-300 hover:text-sky-400 hover:bg-slate-800">
+              Documentation
+            </a>
+            <a href="/pages/resources/repositories.html" class="block px-4 py-3 text-sm text-gray-300 hover:text-sky-400 hover:bg-slate-800">
+              GitHub Repositories
+            </a>
+          </div>
+        </div>
+        <!-- GitHub Link -->
+        <a href="https://github.com/aicryptopia" target="_blank" rel="noopener noreferrer" 
+           class="text-gray-300 hover:text-sky-400 px-3 py-2 text-sm font-medium transition-colors inline-flex items-center">
+          <svg class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+          </svg>
+          GitHub
+        </a>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden">
+        <!-- Mobile menu button -->
+        <button type="button" class="mobile-menu-button text-gray-300 hover:text-sky-400 p-2 ml-4">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Mobile menu panel -->
+        <div class="mobile-menu hidden fixed top-16 left-0 right-0 bg-slate-800 border-t border-slate-700 shadow-lg">
+          <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="/pages/blog.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-sky-400">Blog</a>
+            <a href="/pages/projects.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-sky-400">Projects</a>
+            <a href="/pages/resources.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-sky-400">Resources</a>
+            <a href="/pages/resources/documentation.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-sky-400 pl-6">Documentation</a>
+            <a href="/pages/resources/repositories.html" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-sky-400 pl-6">GitHub Repositories</a>
+            <a href="https://github.com/aicryptopia" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-sky-400">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header> 

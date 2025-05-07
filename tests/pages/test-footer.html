@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Component Test Page</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="/css/shared.css">
+    <!-- Load shared.js first -->
+    <script src="/js/shared.js"></script>
+</head>
+<body class="bg-slate-800 text-white min-h-screen flex flex-col">
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-4">Footer Component Test Page</h1>
+        <p class="mb-8">This page is used to test the new modular footer component structure.</p>
+    </main>
+
+    <!-- Footer Test -->
+    <div id="footer-test"></div>
+
+    <script>
+        // Wait for DOM and shared.js to be ready
+        window.addEventListener('load', function() {
+            loadComponent('/components/layout/Footer/index.html?v=1.1', 'footer-test')
+                .then(() => console.log('Footer container loaded successfully'))
+                .catch(error => console.error('Error loading footer:', error));
+        });
+    </script>
+</body>
+</html> 
